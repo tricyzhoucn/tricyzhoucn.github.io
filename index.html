@@ -299,30 +299,14 @@
 
       
         
-          
-            <h3 id="一、KAFKA"><a href="#一、KAFKA" class="headerlink" title="一、KAFKA"></a>一、KAFKA</h3><p><img src="../images/kafka.png"></p>
-<h4 id="1、特性"><a href="#1、特性" class="headerlink" title="1、特性"></a>1、特性</h4><ul>
-<li>持久性：文件性存储，日志文件存储消息，达到阈值写磁盘，减少磁盘i/o，如果宕机会丢数据</li>
-<li>高吞吐：普通机器百万qps</li>
-<li>支持通过kafka服务器和消费机集群分区消息？</li>
-<li>支持hadoop并行数据加载</li>
-</ul>
-<h4 id="2、术语"><a href="#2、术语" class="headerlink" title="2、术语"></a>2、术语</h4><ul>
-<li>Broker：消息中间处理节点，kafka节点=broker，一个或多个broker组成kafka集群</li>
-<li>Topic：kafka根据topic归类消息</li>
-<li>Producer：生产者</li>
-<li>Consumer：消费者</li>
-<li>ConsumerGroup：消费组</li>
-<li>Partition：物理概念，一个topic分多个partition，partition内部有序</li>
-</ul>
-<h4 id="3、其他"><a href="#3、其他" class="headerlink" title="3、其他"></a>3、其他</h4><p>​    partition存储层面是append log文件，追加log文件尾部，offset标记消息在文件位置，offset是long数字，顺序写磁盘效率高于随机写内存，保证高吞吐</p>
-<h4 id="4、部署"><a href="#4、部署" class="headerlink" title="4、部署"></a>4、部署</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@kafka ~]# wget https://archive.apache.org/dist/kafka/2.2.1/kafka_2.11-2.2.1.tgz</span><br><span class="line">[root@kafka ~]# tar zxf kafka_2.11-2.2.1.tgz </span><br><span class="line">[root@kafka ~]# mv kafka_2.11-2.2.1/ /usr/local/kafka</span><br><span class="line">[root@kafka ~]# cd /usr/local/kafka/bin/</span><br><span class="line"><span class="meta">#</span><span class="bash">启动zookeeper</span></span><br><span class="line">[root@kafka bin]# ./zookeeper-server-start.sh ../config/zookeeper.properties &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash">启动kafka</span></span><br><span class="line">[root@kafka bin]# ./kafka-server-start.sh ../config/server.properties &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash">查看端口是否在监听</span></span><br><span class="line">[root@kafka bin]# netstat -anput | grep 9092</span><br><span class="line">tcp6       0      0 :::9092                 :::*                    LISTEN      43326/java          </span><br><span class="line">tcp6       0      0 192.168.171.134:44388   192.168.171.134:9092    ESTABLISHED 43326/java          </span><br><span class="line">tcp6       0      0 192.168.171.134:9092    192.168.171.134:44388   ESTABLISHED 43326/java   </span><br><span class="line"><span class="meta">#</span><span class="bash">在本机创建kafka，副本数量为1，分区数量为1</span></span><br><span class="line">[root@kafka bin]# ./kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test</span><br><span class="line"><span class="meta">#</span><span class="bash">查看本机的topic</span></span><br><span class="line">[root@kafka bin]# ./kafka-topics.sh --list --bootstrap-server localhost:9092</span><br><span class="line">test</span><br><span class="line"><span class="meta">#</span><span class="bash">发送消息到<span class="built_in">test</span></span></span><br><span class="line">[root@kafka bin]# ./kafka-console-producer.sh --broker-list localhost:9092 --topic test</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">aaa</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">bbb</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">ccc</span></span><br><span class="line"><span class="meta">#</span><span class="bash">开启新的终端，进行读取消息测试，“--from-beginning”表示从开头读取</span></span><br><span class="line">[root@kafka bin]# ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br></pre></td></tr></table></figure>
-
-
-
-<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1624740">kafka单机部署</a></p>
-
-          
+          <p><img src="../images/2022020901.jpeg"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/02/08/big-data/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
