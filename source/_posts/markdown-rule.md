@@ -3,7 +3,7 @@ title: markdown-rule
 date: 2022-01-23 17:13:37
 tags:
 ---
-markdown语法示例。
+> markdown语法示例。
 
 <!-- more -->
 

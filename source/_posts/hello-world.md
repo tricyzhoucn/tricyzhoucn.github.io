@@ -1,8 +1,8 @@
 ---
-title: Hello World
+title: Hexo相关
 ---
 
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+> Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
 <!-- more -->
 
@@ -55,5 +55,9 @@ $ hexo deploy / hexo d
 >A: 原因是hexo在5.0之后把swig给删除了需要自己手动安装 npm i hexo-renderer-swig
 >
 >参考：https://zhuanlan.zhihu.com/p/26625249
+>
+>Q:hexo多机部署主题丢失
+>
+>参考：https://mindawei.github.io/2018/05/01/%E5%A4%9A%E6%9C%BA%E4%BD%BF%E7%94%A8Hexo%E5%8D%9A%E5%AE%A2/
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)

@@ -3,8 +3,10 @@ title: pytorch相关
 date: 2022-01-23 15:08:10
 tags: pytorch
 ---
-pytorch学习ing...
+> pytorch学习ing...
+
 <!-- more -->
+
 ```python
 # 安装 https://pytorch.org/get-started/locally/
 # cuda 11.0
