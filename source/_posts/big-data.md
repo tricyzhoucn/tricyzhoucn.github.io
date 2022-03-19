@@ -1,18 +1,14 @@
 ---
-title: big-data
+title: 大数据组件相关
 date: 2022-02-08 16:54:22
-tags: 大数据
+tags: 数据
 ---
 
-<meta name="referrer" content="no-referrer" />
-
-![](../images/2022020901.jpeg)
+> 大数据相关组件相关
 
 <!-- more -->
 
 ### 一、KAFKA
-
-![](../images/kafka.png)
 
 #### 1、特性
 

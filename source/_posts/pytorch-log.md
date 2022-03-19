@@ -1,7 +1,7 @@
 ---
-title: blog
+title: pytorch相关
 date: 2022-01-23 15:08:10
-tags: 
+tags: pytorch
 ---
 pytorch学习ing...
 <!-- more -->

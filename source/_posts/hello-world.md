@@ -46,4 +46,14 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 $ hexo deploy / hexo d
 ```
 
+### 补充
+
+>Q: github 403 
+>A: hexo用户和git默认用户不一致，增加新用户并在～/.ssh/config配置，另外在_config.yml中https改为ssh
+>
+>Q: next主题设置失败
+>A: 原因是hexo在5.0之后把swig给删除了需要自己手动安装 npm i hexo-renderer-swig
+>
+>参考：https://zhuanlan.zhihu.com/p/26625249
+
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
