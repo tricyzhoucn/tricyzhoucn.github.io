@@ -1,14 +1,37 @@
 ---
-title: 求子数组相关
+title: 算法相关
 date: 2022-03-16 16:18:10
-tags: 算法题
+tags: 算法
 ---
 
-> 1.给定整数数组nums，给定元素个数n，求子数组？
+## 4.动态规划: i个物品，价格ai，收益bi，预算m，单次购买最大收益？
+
+```python
+def t1():
+    res = [[0]*(m+1) for _ in range(n+1)]
+    for i in range(1, n+1):
+        for j in range(1, m+1):
+            if j < A[i-1]:
+                res[i][j] = res[i-1][j]
+            else:
+                res[i][j] = max(res[i-1][j], res[i-1][j-A[i-1]]+V[i-1])
+    return res[-1][-1]
+def t2():
+    res = [0] * (m+1)
+    for i in range(1, n+1):
+        for j in range(m, 0, -1): # 必须逆序
+            if A[i-1]<=j:
+                res[j] = max(res[j], res[j-A[i-1]]+V[i-1])
+    return res[-1]
+```
+
+
+
+## 5.给定整数数组nums，给定元素个数n，求子数组？
 
 <!-- more -->
 
-#### 解法1：常规遍历
+解法1：常规遍历
 
 ```python
 def subsets(nums):
@@ -22,7 +45,7 @@ def subsets(nums):
 print(subsets([1,2,3,4,5]))
 ```
 
-#### 解法2: 位运算
+解法2: 位运算
 
 ```python
 def subsets(nums):
@@ -36,7 +59,7 @@ def subsets(nums):
     return output
 ```
 
-#### 解法3: 回溯
+解法3: 回溯
 
 ```python
 def subsets(nums):
@@ -53,7 +76,7 @@ print(subsets([1,2,3,4]))
 
 > 变种1: 求子数组和可被整除
 
-#### 解法：
+解法1：拆分&查找
 
 ```python
 print(sum(map(lambda x:x%m==0, subsets(nums)[1:])))
