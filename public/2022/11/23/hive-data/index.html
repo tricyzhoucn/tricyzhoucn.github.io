@@ -79,19 +79,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="Hive存储数据格式对比">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo相关">
-<meta property="og:url" content="http://example.com/2022/03/19/hello-world/index.html">
+<meta property="og:title" content="Hive存储">
+<meta property="og:url" content="http://example.com/2022/11/23/hive-data/index.html">
 <meta property="og:site_name" content="tricyzhou的笔记">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="Hive存储数据格式对比">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/03/19/hello-world/2022020901.jpeg">
-<meta property="article:published_time" content="2022-03-19T06:00:18.831Z">
-<meta property="article:modified_time" content="2022-11-22T04:13:01.955Z">
+<meta property="og:image" content="http://example.com/2022/11/23/hive-data/orc.png">
+<meta property="og:image" content="http://example.com/2022/11/23/hive-data/parquet.png">
+<meta property="article:published_time" content="2022-11-23T02:23:43.000Z">
+<meta property="article:modified_time" content="2022-11-25T03:38:07.398Z">
 <meta property="article:author" content="Tricy Zhou">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/03/19/hello-world/2022020901.jpeg">
+<meta name="twitter:image" content="http://example.com/2022/11/23/hive-data/orc.png">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2022/03/19/hello-world/"/>
+  <link rel="canonical" href="http://example.com/2022/11/23/hive-data/"/>
 
 
 
 
 
-  <title>Hexo相关 | tricyzhou的笔记</title>
+  <title>Hive存储 | tricyzhou的笔记</title>
   
 
 
@@ -234,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/23/hive-data/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -251,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo相关</h1>
+          <h1 class="post-title" itemprop="name headline">Hive存储</h1>
         
 
         <div class="post-meta">
@@ -263,8 +264,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-19T14:00:18+08:00">
-                2022-03-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-11-23T10:23:43+08:00">
+                2022-11-23
               </time>
             
 
@@ -301,35 +302,103 @@
       
 
       
-        <p><img src="/2022/03/19/hello-world/2022020901.jpeg" alt="测试图片"></p>
-<blockquote>
-<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <blockquote>
+<p>Hive存储数据格式对比</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="CLEAN"><a href="#CLEAN" class="headerlink" title="CLEAN"></a>CLEAN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean </span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server / hexo s</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate / hexo g</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy / hexo d</span><br></pre></td></tr></table></figure>
-
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><blockquote>
-<p>Q: github 403<br>A: hexo用户和git默认用户不一致，增加新用户并在～/.ssh/config配置，另外在_config.yml中https改为ssh</p>
-<p>Q: next主题设置失败<br>A: 原因是hexo在5.0之后把swig给删除了需要自己手动安装 npm i hexo-renderer-swig</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">https://zhuanlan.zhihu.com/p/26625249</a></p>
-<p>Q:hexo多机部署主题丢失</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://mindawei.github.io/2018/05/01/%E5%A4%9A%E6%9C%BA%E4%BD%BF%E7%94%A8Hexo%E5%8D%9A%E5%AE%A2/">https://mindawei.github.io/2018/05/01/%E5%A4%9A%E6%9C%BA%E4%BD%BF%E7%94%A8Hexo%E5%8D%9A%E5%AE%A2/</a></p>
+<h2 id="Hive存储"><a href="#Hive存储" class="headerlink" title="Hive存储"></a>Hive存储</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><ul>
+<li><p>行式存储</p>
+<ul>
+<li>文本格式（TextFile）</li>
+<li>二进制序列化文件（SequenceFile）</li>
+</ul>
+</li>
+<li><p>列式存储</p>
+<ul>
+<li>行列式文件（RCFile）</li>
+<li>优化的行列式文件（ORCFile）</li>
+<li>Parquet</li>
+</ul>
+</li>
+</ul>
+<h3 id="列式存储优势"><a href="#列式存储优势" class="headerlink" title="列式存储优势"></a>列式存储优势</h3><ul>
+<li>查询时只读指定列，查询速度快</li>
+<li>压缩时相同数据类型，压缩比高</li>
+</ul>
+<h3 id="典型分析"><a href="#典型分析" class="headerlink" title="典型分析"></a>典型分析</h3><h4 id="TextFile"><a href="#TextFile" class="headerlink" title="TextFile"></a>TextFile</h4><p>TextFile直接行式存储，可以直接load方式加载数据，加载速度快；</p>
+<p>TextFile反序列化必须逐个字符判断是不是分隔符或行结束符号，开销大；</p>
+<h4 id="ORCFile"><a href="#ORCFile" class="headerlink" title="ORCFile"></a>ORCFile</h4><ul>
+<li><p>1.ORC扩展了RCFile的压缩，除了<strong>游程编码</strong>(run-length)，引入<strong>字典编码</strong>和<strong>BIT编码</strong>；</p>
+</li>
+<li><p>2.每个TASK只输出单个文件，减少NameNode负载；</p>
+</li>
+<li><p>3.支持复杂数据类型，datetime、decimal、struct、list、map等；</p>
+</li>
+<li><p>4.文件可切分，查询时输入数据量少；</p>
+</li>
+</ul>
+<blockquote>
+<p>游程编码：变动长度编码法，AAAABBBCCDEEEE-&gt;4A3B2C1D4E;</p>
+<p>字典编码：最后存储字典值，每个字典值长度以及字段在字典位置；</p>
+<p>BIT编码：null则存0否则1，null实际编码不需要存储，不占用存储空间；</p>
 </blockquote>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>结构： </p>
+<p>  每个ORC文件横向切分多个stripe，每个stripe列式存储，每个stripe默认250MB；</p>
+<p><img src="/2022/11/23/hive-data/orc.png" alt="orc结构"></p>
+<ul>
+<li>条带(stripe)：ORC文件存储数据；</li>
+<li>文件注脚(file footer)：包含了文件中stripe的列表，每个stripe的行数，以及每个列的数据类型；每个列的最小值，最大值，行计数，求和等聚合信息。</li>
+<li>postscript：含有压缩参数和压缩大小相关信息。</li>
+</ul>
+<p>stripe：</p>
+<ul>
+<li>Index data：条带统计信息，数据在条带中位置索引信息。</li>
+<li>rows data：数据存储，多个<strong>行组</strong>组成，数据以流(stream)形式存储。</li>
+<li>stripe footer：保存数据所在文件目录。</li>
+</ul>
+<p>rows data存储两部分数据，metadata stream和data stream：</p>
+<ul>
+<li>metadata stream：描述每个行组的元数据信息；</li>
+<li>data stream：存储数据；</li>
+</ul>
+<p>ORC三级索引：</p>
+<ul>
+<li>文件级：记录文件中所有stripe的位置信息，以及文件中所存储的每列数据的统计信息；</li>
+<li>条带级：记录每个stripe所存储数据的统计信息；</li>
+<li>行组级：记录每个行组所存储数据的统计信息，在stripe中，10000行构成一个行组；</li>
+</ul>
+<p>三级索引查找过程：</p>
+<p>  查询ORC文件类型的表时，会先对比文件级索引列统计信息，找到满足条件的文件；接着，根据条带级索引信息，找到满足条件的条带快，之后在根据行组级索引，找到满足条件的行组；避免遍历全部，减少磁盘和网络I/O。</p>
+<p>数据类型（所有类型都接受NULL值）：</p>
+<ul>
+<li>整型：包含boolean(1 bit)、tiny(8 bit)、smallint(16 bit)、int(32 bit)、bigint(64 bit)</li>
+<li>浮点型：包含float和double</li>
+<li>字符串类型：包含string、char和varchar</li>
+<li>二进制类型：包含binary</li>
+<li>日期和时间类型：包含timestamp和date</li>
+<li>复杂类型：包含struct、list、map和union类型</li>
+</ul>
+<p>ACID事务支持：</p>
+<p>  Hive 0.14版本之前，只能新增或者删除整块分区或表，而不能对表的单个记录进行修改；</p>
+<p>  Hive 0.14版本之后，ORC文件能够保证原子性、一致性、隔离性和持久性的ACID事务能够被支持，支持数据更新；</p>
+<p>  Hive事务适用于大批量数据更新，不建议频繁小批量更新；</p>
+<p>压缩：</p>
+<p>  可选的类型有 NONE、ZLIB 和 SNAPPY，默认值是 ZLIB</p>
+<h4 id="Parquet"><a href="#Parquet" class="headerlink" title="Parquet"></a>Parquet</h4><p>结构：</p>
+<p><img src="/2022/11/23/hive-data/parquet.png" alt="parquet结构"></p>
+<p>  Parquet存储数据时，同时存储多级元数据，文件级元数据、列块级元数据、页级元数据；</p>
+<ul>
+<li><p>文件级元数据：表结构信息；文件记录数；行组数、每个行组数据总量和记录数；每个行组列块的文件偏移量；</p>
+</li>
+<li><p>列块级元数据：压缩前后数据大小和压缩编码；数据页、索引页的偏移量；列块的数据记录数；</p>
+</li>
+<li><p>页级元数据：编码信息和数据记录数；</p>
+</li>
+</ul>
+<p>Parquet针对嵌套式结构支持好，ORC多层嵌套表达起来比较复杂，性能损失大；</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14932245/4608206">https://blog.51cto.com/u_14932245/4608206</a></p>
 
       
     </div>
@@ -354,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/03/16/code/" rel="next" title="算法相关">
-                <i class="fa fa-chevron-left"></i> 算法相关
+              <a href="/2022/03/19/hello-world/" rel="next" title="Hexo相关">
+                <i class="fa fa-chevron-left"></i> Hexo相关
               </a>
             
           </div>
@@ -363,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/11/23/hive-data/" rel="prev" title="Hive存储">
-                Hive存储 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CLEAN"><span class="nav-number">1.2.</span> <span class="nav-text">CLEAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.3.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.4.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.5.</span> <span class="nav-text">Deploy to remote sites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">1.6.</span> <span class="nav-text">补充</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive%E5%AD%98%E5%82%A8"><span class="nav-number">1.</span> <span class="nav-text">Hive存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%A7%88"><span class="nav-number">1.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E5%BC%8F%E5%AD%98%E5%82%A8%E4%BC%98%E5%8A%BF"><span class="nav-number">1.2.</span> <span class="nav-text">列式存储优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">典型分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TextFile"><span class="nav-number">1.3.1.</span> <span class="nav-text">TextFile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ORCFile"><span class="nav-number">1.3.2.</span> <span class="nav-text">ORCFile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parquet"><span class="nav-number">1.3.3.</span> <span class="nav-text">Parquet</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

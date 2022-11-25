@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="提桶跑路…">
+<meta name="description" content="算法记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法相关">
 <meta property="og:url" content="http://example.com/2022/03/16/code/index.html">
 <meta property="og:site_name" content="tricyzhou的笔记">
-<meta property="og:description" content="提桶跑路…">
+<meta property="og:description" content="算法记录">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-16T08:18:10.000Z">
-<meta property="article:modified_time" content="2022-03-19T08:48:50.834Z">
+<meta property="article:modified_time" content="2022-11-21T09:10:53.731Z">
 <meta property="article:author" content="Tricy Zhou">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -192,7 +192,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -300,7 +300,9 @@
       
 
       
-        <p>提桶跑路…</p>
+        <blockquote>
+<p>算法记录</p>
+</blockquote>
 <span id="more"></span>
 
 <h2 id="4-动态规划-i个物品，价格ai，收益bi，预算m，单次购买最大收益？"><a href="#4-动态规划-i个物品，价格ai，收益bi，预算m，单次购买最大收益？" class="headerlink" title="4.动态规划: i个物品，价格ai，收益bi，预算m，单次购买最大收益？"></a>4.动态规划: i个物品，价格ai，收益bi，预算m，单次购买最大收益？</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">t1</span>():</span></span><br><span class="line">    res = [[<span class="number">0</span>]*(m+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> j &lt; A[i-<span class="number">1</span>]:</span><br><span class="line">                res[i][j] = res[i-<span class="number">1</span>][j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res[i][j] = <span class="built_in">max</span>(res[i-<span class="number">1</span>][j], res[i-<span class="number">1</span>][j-A[i-<span class="number">1</span>]]+V[i-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> res[-<span class="number">1</span>][-<span class="number">1</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">t2</span>():</span></span><br><span class="line">    res = [<span class="number">0</span>] * (m+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m, <span class="number">0</span>, -<span class="number">1</span>): <span class="comment"># 必须逆序</span></span><br><span class="line">            <span class="keyword">if</span> A[i-<span class="number">1</span>]&lt;=j:</span><br><span class="line">                res[j] = <span class="built_in">max</span>(res[j], res[j-A[i-<span class="number">1</span>]]+V[i-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> res[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
@@ -441,9 +443,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
