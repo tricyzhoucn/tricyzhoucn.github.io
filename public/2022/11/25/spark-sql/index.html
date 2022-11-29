@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="大数据," />
 
 
 
@@ -79,19 +79,24 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="Spark SQL执行原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo相关">
-<meta property="og:url" content="http://example.com/2022/03/19/hello-world/index.html">
+<meta property="og:title" content="Spark-SQL">
+<meta property="og:url" content="http://example.com/2022/11/25/spark-sql/index.html">
 <meta property="og:site_name" content="tricyzhou的笔记">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="Spark SQL执行原理">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/03/19/hello-world/2022020901.jpeg">
-<meta property="article:published_time" content="2022-03-19T06:00:18.831Z">
-<meta property="article:modified_time" content="2022-11-22T04:13:01.955Z">
+<meta property="og:image" content="http://example.com/2022/11/25/spark-sql/parser.png">
+<meta property="og:image" content="http://example.com/2022/11/25/spark-sql/analyzer.png">
+<meta property="og:image" content="http://example.com/2022/11/25/spark-sql/predicate_pushdown.png">
+<meta property="og:image" content="http://example.com/2022/11/25/spark-sql/constant_fold.png">
+<meta property="og:image" content="http://example.com/2022/11/25/spark-sql/summary.png">
+<meta property="article:published_time" content="2022-11-25T06:50:13.000Z">
+<meta property="article:modified_time" content="2022-11-26T07:43:53.596Z">
 <meta property="article:author" content="Tricy Zhou">
+<meta property="article:tag" content="大数据">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/03/19/hello-world/2022020901.jpeg">
+<meta name="twitter:image" content="http://example.com/2022/11/25/spark-sql/parser.png">
 
 
 
@@ -121,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2022/03/19/hello-world/"/>
+  <link rel="canonical" href="http://example.com/2022/11/25/spark-sql/"/>
 
 
 
 
 
-  <title>Hexo相关 | tricyzhou的笔记</title>
+  <title>Spark-SQL | tricyzhou的笔记</title>
   
 
 
@@ -234,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/25/spark-sql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -251,7 +256,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo相关</h1>
+          <h1 class="post-title" itemprop="name headline">Spark-SQL</h1>
         
 
         <div class="post-meta">
@@ -263,8 +268,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-19T14:00:18+08:00">
-                2022-03-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-11-25T14:50:13+08:00">
+                2022-11-25
               </time>
             
 
@@ -301,35 +306,67 @@
       
 
       
-        <p><img src="/2022/03/19/hello-world/2022020901.jpeg" alt="测试图片"></p>
-<blockquote>
-<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <blockquote>
+<p>Spark SQL执行原理</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="CLEAN"><a href="#CLEAN" class="headerlink" title="CLEAN"></a>CLEAN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean </span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server / hexo s</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate / hexo g</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy / hexo d</span><br></pre></td></tr></table></figure>
-
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><blockquote>
-<p>Q: github 403<br>A: hexo用户和git默认用户不一致，增加新用户并在～/.ssh/config配置，另外在_config.yml中https改为ssh</p>
-<p>Q: next主题设置失败<br>A: 原因是hexo在5.0之后把swig给删除了需要自己手动安装 npm i hexo-renderer-swig</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">https://zhuanlan.zhihu.com/p/26625249</a></p>
-<p>Q:hexo多机部署主题丢失</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://mindawei.github.io/2018/05/01/%E5%A4%9A%E6%9C%BA%E4%BD%BF%E7%94%A8Hexo%E5%8D%9A%E5%AE%A2/">https://mindawei.github.io/2018/05/01/%E5%A4%9A%E6%9C%BA%E4%BD%BF%E7%94%A8Hexo%E5%8D%9A%E5%AE%A2/</a></p>
+<h2 id="Spark-SQL"><a href="#Spark-SQL" class="headerlink" title="Spark-SQL"></a>Spark-SQL</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h4 id="了解Catalyst"><a href="#了解Catalyst" class="headerlink" title="了解Catalyst"></a>了解Catalyst</h4><p>  Spark SQL核心：</p>
+<ul>
+<li><p>解析(Parser)</p>
+</li>
+<li><p>优化(Optimizer)</p>
+</li>
+<li><p>执行(Execution)</p>
+<p>五大组件：</p>
+</li>
+<li><p>Parser模块：将sql解析为抽象语法树(AST)</p>
+<p>依赖第三方类库ANTLR</p>
+<p><img src="/2022/11/25/spark-sql/parser.png" alt="parser"></p>
+</li>
+<li><p>Analyzer模块：遍历AST，对AST节点数据类型和函数绑定，根据元数据信息Catalog解析数据表字段</p>
+<p>会判断表名、字段名是否存在</p>
+<p><img src="/2022/11/25/spark-sql/analyzer.png" alt="analyzer"></p>
+</li>
+<li><p>Optimizer模块：Catalyst核心，RBO(基于规则优化)和CBO(基于代价优化)</p>
+<p>谓词下推：过滤操作下推join之前，减少join数据量，减少耗时；</p>
+<p><img src="/2022/11/25/spark-sql/predicate_pushdown.png" alt="predicate-pushdown"></p>
+<p>常量累加：减少每行重复常量计算，直接使用结果；</p>
+<p><img src="/2022/11/25/spark-sql/constant_fold.png" alt="constant_fold"></p>
+<p>列值裁剪：裁剪不需要的列，减少网络、内存消耗，提高列式存储扫描效率；</p>
+</li>
+<li><p>SparkPlanner模块：优化后的逻辑执行计划(OptimizedLogicalPlan)转为物理计划PhysicalPlan</p>
+<p>例如，Spark会针对join算子制定真正执行的计划：</p>
+<ul>
+<li><p>BroadcastHashJoin(小join大)：</p>
+<p>小表分发到大表所在节点，广播算法可以是先发给driver然后分发给executor，在executor执行小表映射，大表试探；</p>
+<p>SparkSQL规定BroadcastHashJoin执行条件，小表小于参数spark.sql.autoBroadcastJoinThreshold，默认10MB；</p>
+</li>
+<li><p>ShuffleHashJoin(大join小)</p>
+<p>两张表中的数据充分布到集群所有节点，称为shuffle，节点上执行hash join算法；</p>
+</li>
+<li><p>SortMergeJoin(大join大)</p>
+<p>先shuffle，节点上两表sort，双指针遍历，匹配merge</p>
+</li>
+</ul>
+<blockquote>
+<p>hash join：</p>
+<p>1）确定build table和probe table，通常build小probe大</p>
+<p>2）build table根据key做hash，生成hash table缓存到内存，内存不够dump外存</p>
+<p>3）扫描probe table相同hash映射，匹配则join到一起 </p>
 </blockquote>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+</li>
+<li><p>CostModel模块：根据性能统计数据，选择最佳物理执行计划，基于CBO</p>
+<p>选择代价最小的物理执行计划</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>选择最优物理执行计划，生成java字节码，将SQL转化为DAG，以RDD形式进行执行；</p>
+<p><img src="/2022/11/25/spark-sql/summary.png" alt="summary"></p>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2008340">https://cloud.tencent.com/developer/article/2008340</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lp284558195/article/details/80717219">https://blog.csdn.net/lp284558195/article/details/80717219</a></p>
 
       
     </div>
@@ -345,6 +382,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag"># 大数据</a>
+          
+        </div>
+      
 
       
       
@@ -354,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/03/16/code/" rel="next" title="算法相关">
-                <i class="fa fa-chevron-left"></i> 算法相关
+              <a href="/2022/11/23/hive-data/" rel="next" title="Hive存储">
+                <i class="fa fa-chevron-left"></i> Hive存储
               </a>
             
           </div>
@@ -364,8 +407,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/11/23/hive-data/" rel="prev" title="Hive存储">
-                Hive存储 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/11/28/Data-Warehouse/" rel="prev" title="Data-Warehouse">
+                Data-Warehouse <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -489,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CLEAN"><span class="nav-number">1.2.</span> <span class="nav-text">CLEAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.3.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.4.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.5.</span> <span class="nav-text">Deploy to remote sites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">1.6.</span> <span class="nav-text">补充</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-SQL"><span class="nav-number">1.</span> <span class="nav-text">Spark-SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3Catalyst"><span class="nav-number">1.1.1.</span> <span class="nav-text">了解Catalyst</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
