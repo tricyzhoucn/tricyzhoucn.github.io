@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sql," />
 
 
 
@@ -79,19 +79,18 @@
 
 
 
-<meta name="description" content="markdown语法示例。">
+<meta name="description" content="Hive sql 汇总">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown-rule">
-<meta property="og:url" content="http://example.com/2022/01/23/markdown-rule/index.html">
+<meta property="og:title" content="hive-sql">
+<meta property="og:url" content="http://example.com/2022/12/05/hive-sql/index.html">
 <meta property="og:site_name" content="tricyzhou的笔记">
-<meta property="og:description" content="markdown语法示例。">
+<meta property="og:description" content="Hive sql 汇总">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://note.youdao.com/favicon.ico">
-<meta property="article:published_time" content="2022-01-23T09:13:37.000Z">
-<meta property="article:modified_time" content="2022-11-20T06:32:01.114Z">
+<meta property="article:published_time" content="2022-12-05T07:01:21.000Z">
+<meta property="article:modified_time" content="2022-12-05T07:11:56.383Z">
 <meta property="article:author" content="Tricy Zhou">
+<meta property="article:tag" content="sql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://note.youdao.com/favicon.ico">
 
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2022/01/23/markdown-rule/"/>
+  <link rel="canonical" href="http://example.com/2022/12/05/hive-sql/"/>
 
 
 
 
 
-  <title>markdown-rule | tricyzhou的笔记</title>
+  <title>hive-sql | tricyzhou的笔记</title>
   
 
 
@@ -234,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/markdown-rule/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/05/hive-sql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -251,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">markdown-rule</h1>
+          <h1 class="post-title" itemprop="name headline">hive-sql</h1>
         
 
         <div class="post-meta">
@@ -263,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-23T17:13:37+08:00">
-                2022-01-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-05T15:01:21+08:00">
+                2022-12-05
               </time>
             
 
@@ -302,67 +301,16 @@
 
       
         <blockquote>
-<p>markdown语法示例。</p>
+<p>Hive sql 汇总</p>
 </blockquote>
 <span id="more"></span>
 
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h1 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h1><ul>
-<li>列表1<ul>
-<li>列表1.1</li>
-<li>列表1.2</li>
-</ul>
-</li>
-<li>列表2</li>
-<li>列表3</li>
-<li></li>
-</ul>
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><blockquote>
-<p>引用一段话</p>
-</blockquote>
-<h1 id="斜体和粗体"><a href="#斜体和粗体" class="headerlink" title="斜体和粗体"></a>斜体和粗体</h1><p><em>斜体</em></p>
-<p><strong>粗体</strong></p>
-<h1 id="链接和图片"><a href="#链接和图片" class="headerlink" title="链接和图片"></a>链接和图片</h1><p><a target="_blank" rel="noopener" href="http://note.youdao.com/">链接</a></p>
-<p><img src="http://note.youdao.com/favicon.ico" alt="图片"></p>
-<h1 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h1><p>第一段</p>
-<hr>
-<p>第二段</p>
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><table>
-<thead>
-<tr>
-<th align="left">item</th>
-<th align="right">value</th>
-<th align="center">qty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">w 1</td>
-<td align="right">col 1</td>
-<td align="center">5</td>
-</tr>
-<tr>
-<td align="left">w 2</td>
-<td align="right">col 1</td>
-<td align="center">12</td>
-</tr>
-</tbody></table>
-<h1 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>:</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="连续7天登陆"><a href="#连续7天登陆" class="headerlink" title="连续7天登陆"></a>连续7天登陆</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> user_id, <span class="built_in">count</span>(<span class="number">1</span>) <span class="keyword">as</span> cn </span><br><span class="line"><span class="keyword">from</span> (</span><br><span class="line">    <span class="keyword">select</span> user_id, login_date, <span class="built_in">row_number</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_id <span class="keyword">order</span> <span class="keyword">by</span> login_date) <span class="keyword">as</span> rn </span><br><span class="line">    <span class="keyword">from</span> (</span><br><span class="line">        <span class="keyword">select</span> user_id, login_date </span><br><span class="line">        <span class="keyword">from</span> db.t </span><br><span class="line">        <span class="keyword">group</span> <span class="keyword">by</span> user_id, login_date</span><br><span class="line">    )</span><br><span class="line">) <span class="keyword">group</span> <span class="keyword">by</span> user_id, date_sub(login_date, rn)</span><br><span class="line"><span class="keyword">where</span> cn<span class="operator">&gt;=</span><span class="number">7</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="todolist"><a href="#todolist" class="headerlink" title="todolist"></a>todolist</h1><ul>
-<li><input checked disabled type="checkbox"> 已完成项目<ul>
-<li><input checked disabled type="checkbox"> 已完成事项1</li>
-<li><input checked disabled type="checkbox"> 已完成事项2</li>
-</ul>
-</li>
-<li><input disabled type="checkbox"> 代办事项1</li>
-</ul>
-<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[Christmas] --&gt;B(Go shopping)</span><br><span class="line">    B --&gt;C&#123;Let me think&#125;</span><br><span class="line">    C --&gt;|One| D[Laptop]</span><br><span class="line">    C --&gt;|Two| E[iphone]</span><br><span class="line">    C --&gt;|Three| F[Car]</span><br></pre></td></tr></table></figure>
+<h4 id="时间处理"><a href="#时间处理" class="headerlink" title="时间处理"></a>时间处理</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_sub(from_unixtime(unix_timestamp(<span class="built_in">cast</span>(imp_date <span class="keyword">as</span> string), <span class="string">&#x27;yyyyMMdd&#x27;</span>)),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="序列图"><a href="#序列图" class="headerlink" title="序列图"></a>序列图</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    loop every day</span><br><span class="line">        Alice-&gt;&gt;John:Hello John, how are you?</span><br><span class="line">        Jojn--&gt;&gt;Alice:Great!</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+<h4 id="相邻间隔"><a href="#相邻间隔" class="headerlink" title="相邻间隔"></a>相邻间隔</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> t1.id, </span><br><span class="line">t1.ctime, </span><br><span class="line">t2.id, </span><br><span class="line">t2.ctime,</span><br><span class="line">timediff(t2.ctime,t1.ctime) <span class="keyword">as</span> diff <span class="comment">-- abs(datediff())</span></span><br><span class="line"><span class="keyword">from</span> t t1 <span class="keyword">inner</span> <span class="keyword">join</span> t t2 </span><br><span class="line"><span class="keyword">on</span> t1.id <span class="operator">+</span> <span class="number">1</span> <span class="operator">=</span> t2.id</span><br></pre></td></tr></table></figure>
 
-<h1 id="甘特图"><a href="#甘特图" class="headerlink" title="甘特图"></a>甘特图</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">dateFormat YYYY-MM-DD</span><br><span class="line">title 产品计划表</span><br><span class="line">section 初期阶段</span><br><span class="line">明确需求:2016-03-01,10d</span><br><span class="line">section 中期阶段</span><br><span class="line">跟进开发:2016-03-11,15d</span><br><span class="line">section 后期阶段</span><br><span class="line">走查测试:2016-03-20,9d</span><br></pre></td></tr></table></figure>
-
-<h1 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h1><p>Inline math:<code>$dfrac&#123; \tfrac&#123;1&#125;&#123;2&#125;[1-(\tfrac&#123;1&#125;&#123;2&#125;)^n] &#125;&#123;     1-\tfrac&#123;1&#125;&#123;2&#125;&#125; = s_n$</code></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/coolyoung520/article/details/108960281">参考文档</a></p>
 
       
     </div>
@@ -378,6 +326,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
 
       
       
@@ -387,8 +341,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/01/23/pytorch-log/" rel="next" title="pytorch相关">
-                <i class="fa fa-chevron-left"></i> pytorch相关
+              <a href="/2022/12/05/sort-py/" rel="next" title="sort-py">
+                <i class="fa fa-chevron-left"></i> sort-py
               </a>
             
           </div>
@@ -396,10 +350,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/02/08/big-data/" rel="prev" title="大数据组件">
-                大数据组件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,7 +472,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">三级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">四级标题</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%9C%E4%BD%93%E5%92%8C%E7%B2%97%E4%BD%93"><span class="nav-number">4.</span> <span class="nav-text">斜体和粗体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%92%8C%E5%9B%BE%E7%89%87"><span class="nav-number">5.</span> <span class="nav-text">链接和图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E7%BA%BF"><span class="nav-number">6.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">7.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">8.</span> <span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#todolist"><span class="nav-number">9.</span> <span class="nav-text">todolist</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">10.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%9B%BE"><span class="nav-number">11.</span> <span class="nav-text">序列图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%98%E7%89%B9%E5%9B%BE"><span class="nav-number">12.</span> <span class="nav-text">甘特图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">13.</span> <span class="nav-text">数学公式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD7%E5%A4%A9%E7%99%BB%E9%99%86"><span class="nav-number">1.</span> <span class="nav-text">连续7天登陆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">时间处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E9%82%BB%E9%97%B4%E9%9A%94"><span class="nav-number">3.</span> <span class="nav-text">相邻间隔</span></a></li></ol></div>
             
 
           </div>
