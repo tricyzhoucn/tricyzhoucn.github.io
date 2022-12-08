@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="树," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="树相关汇总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="binary-tree">
+<meta property="og:url" content="http://example.com/2022/12/08/binary-tree/index.html">
+<meta property="og:site_name" content="tricyzhou的笔记">
+<meta property="og:description" content="树相关汇总">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-08T06:20:24.000Z">
+<meta property="article:modified_time" content="2022-12-08T07:27:10.930Z">
+<meta property="article:author" content="Tricy Zhou">
+<meta property="article:tag" content="树">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2022/12/08/binary-tree/"/>
+
+
+
+
+
+  <title>binary-tree | tricyzhou的笔记</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">tricyzhou的笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/08/binary-tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tricyzhou的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">binary-tree</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-08T14:20:24+08:00">
+                2022-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>树相关汇总</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="普通遍历"><a href="#普通遍历" class="headerlink" title="普通遍历"></a>普通遍历</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前序遍历(根左右)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preOrderTravesal</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="built_in">print</span>(root.v)</span><br><span class="line">    preOrderTravesal(root.l)</span><br><span class="line">    preOrderTravesal(root.r)</span><br><span class="line"><span class="comment"># 中序遍历(左根右)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inOrderTravesal</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    inOrderTravesal(root.l)</span><br><span class="line">    <span class="built_in">print</span>(root.v)</span><br><span class="line">    inOrderTravesal(root.r)</span><br><span class="line"><span class="comment"># 后续遍历(左右根)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posOrderTravesal</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    posOrderTravesal(root.l)</span><br><span class="line">    posOrderTravesal(root.r)</span><br><span class="line">    <span class="built_in">print</span>(root.v)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 非递归前序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preOrder</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    result = [] <span class="comment"># 结果</span></span><br><span class="line">    stack = []  <span class="comment"># 缓存</span></span><br><span class="line">    <span class="keyword">while</span> root!=<span class="literal">None</span> <span class="keyword">or</span> <span class="built_in">len</span>(stack)!=<span class="number">0</span>: </span><br><span class="line">        <span class="keyword">while</span> root!=<span class="literal">None</span>: <span class="comment"># 遍历左子树</span></span><br><span class="line">            result.append(root.v) <span class="comment"># 根结点先入结果集</span></span><br><span class="line">            stack.append(root)</span><br><span class="line">            root = root.l</span><br><span class="line">        node = stack[<span class="built_in">len</span>(stack)-<span class="number">1</span>] <span class="comment"># 弹出</span></span><br><span class="line">        stack = stack[:<span class="built_in">len</span>(stack)-<span class="number">1</span>] <span class="comment"># 清理缓存</span></span><br><span class="line">        root = node.r <span class="comment"># root为弹出节点的右节点</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment"># 非递归中序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inOrder</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    result = []</span><br><span class="line">    stack = []</span><br><span class="line">    <span class="keyword">while</span> root!=<span class="literal">None</span> <span class="keyword">or</span> <span class="built_in">len</span>(stack)!=<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">while</span> root!=<span class="literal">None</span>:</span><br><span class="line">            stack.append(root)</span><br><span class="line">            root = root.l</span><br><span class="line">        node = stack[<span class="built_in">len</span>(stack)-<span class="number">1</span>]</span><br><span class="line">        stack = stack[:<span class="built_in">len</span>(stack)-<span class="number">1</span>]</span><br><span class="line">        result.append(node.v) <span class="comment"># 左节点先入结果集(和前序区别)</span></span><br><span class="line">        root = node.r</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment"># 非递归后序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posOrder</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    result = []</span><br><span class="line">    stack = []</span><br><span class="line">    lastVisit = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">while</span> root!=<span class="literal">None</span> <span class="keyword">or</span> <span class="built_in">len</span>(stack)!=<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">while</span> root!=<span class="literal">None</span>:</span><br><span class="line">            stack.append(root)</span><br><span class="line">            root = root.l</span><br><span class="line">        node = stack[<span class="built_in">len</span>(stack)-<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> node.r==<span class="literal">None</span> <span class="keyword">or</span> node.r==lastVisit: <span class="comment"># 确保右节点先于跟节点进入结果集</span></span><br><span class="line">            stack = stack[:<span class="built_in">len</span>(stack)-<span class="number">1</span>] </span><br><span class="line">            result.append(node.v) </span><br><span class="line">            lastVisit = node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            root = node.r <span class="comment"># 确保右节点先于跟节点进入结果集</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h3 id="优先遍历"><a href="#优先遍历" class="headerlink" title="优先遍历"></a>优先遍历</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 深度优先遍历(前序遍历)</span></span><br><span class="line">result = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> root==<span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    result.append(root.v)</span><br><span class="line">    dfs(root.l)</span><br><span class="line">    dfs(root.r)</span><br><span class="line"><span class="comment"># 广度优先遍历(层次遍历)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> root==<span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    queue = [root]</span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.pop(<span class="number">0</span>)</span><br><span class="line">        result.append(node.v)</span><br><span class="line">        <span class="keyword">if</span> node.l: queue.append(node.l)</span><br><span class="line">        <span class="keyword">if</span> node.r: queue.append(node.r)</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h3 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(maxDepth(root.l), maxDepth(root.r))+<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 是否平衡树(平衡返回最大深度)</span></span><br><span class="line"><span class="comment"># 平衡树:左右子树深度差不超过1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">balanceTree</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    left = maxDepth(root.l)</span><br><span class="line">    right = maxDepth(root.r)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">abs</span>(left-right)&gt;<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(left,right)+<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 最大路径值和</span></span><br><span class="line">result = <span class="built_in">float</span>(<span class="string">&quot;-inf&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxPathSum</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    left = maxPathSum(root.l)</span><br><span class="line">    right = maxPathSum(root.r)</span><br><span class="line">    <span class="keyword">global</span> result</span><br><span class="line">    result = <span class="built_in">max</span>(left + right + root.v, result) <span class="comment"># 如果当前节点为根节点最大路径和</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">0</span>, <span class="built_in">max</span>(left, right) + root.v) <span class="comment"># 当前节点作为子节点能提供的最大路径和</span></span><br><span class="line">maxPathSum(n1)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 公共祖先</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">commonAncester</span>(<span class="params">root, p, q</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root <span class="keyword">or</span> root==p <span class="keyword">or</span> root==q:</span><br><span class="line">        <span class="keyword">return</span> root</span><br><span class="line">    left = commonAncester(root.l, p, q) <span class="comment"># 是否包含p或q</span></span><br><span class="line">    right = commonAncester(root.r, p, q)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> left: <span class="keyword">return</span> right <span class="comment"># 没在左说明在右</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> right: <span class="keyword">return</span> left <span class="comment"># 没在右说明在左</span></span><br><span class="line">    <span class="keyword">return</span> root <span class="comment"># 左右都有说明跟节点是公共祖先</span></span><br><span class="line">commonAncester(n1,n2,n3).v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否是二叉搜索树</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bst</span>(<span class="params">root</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span>(<span class="params">root, minv, maxv</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> minv&lt;root.v&lt;maxv:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> helper(root.l, minv, root.v) <span class="keyword">and</span> helper(root.r, root.v, maxv)</span><br><span class="line">    <span class="keyword">return</span> helper(root, <span class="built_in">float</span>(<span class="string">&quot;-inf&quot;</span>), <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>))</span><br><span class="line">bst(n1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入bst</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertBST</span>(<span class="params">root, v</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> TreeNode(v)</span><br><span class="line">    <span class="keyword">if</span> root.v &lt; v:</span><br><span class="line">        root.r = insertBST(root.r, v)</span><br><span class="line">    <span class="keyword">if</span> root.v &gt; v:</span><br><span class="line">        root.l = insertBST(root.l, v)</span><br><span class="line">    <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+
+<h3 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, v, l, r</span>):</span></span><br><span class="line">        self.v = v</span><br><span class="line">        self.l = l</span><br><span class="line">        self.r = r</span><br><span class="line">n1,n2,n3,n4,n5,n6,n7 = TreeNode(<span class="number">1</span>,<span class="literal">None</span>,<span class="literal">None</span>),TreeNode(<span class="number">2</span>,<span class="literal">None</span>,<span class="literal">None</span>),TreeNode(<span class="number">3</span>,<span class="literal">None</span>,<span class="literal">None</span>),TreeNode(<span class="number">4</span>,<span class="literal">None</span>,<span class="literal">None</span>),TreeNode(<span class="number">5</span>,<span class="literal">None</span>,<span class="literal">None</span>),TreeNode(<span class="number">6</span>,<span class="literal">None</span>,<span class="literal">None</span>),TreeNode(<span class="number">7</span>,<span class="literal">None</span>,<span class="literal">None</span>)</span><br><span class="line">n1.l=n2</span><br><span class="line">n1.r=n3</span><br><span class="line">n2.l=n4</span><br><span class="line">n2.r=n5</span><br><span class="line">n3.l=n6</span><br><span class="line">n3.r=n7</span><br><span class="line"><span class="comment">#    1</span></span><br><span class="line"><span class="comment">#  2   3</span></span><br><span class="line"><span class="comment"># 4 5 6 7</span></span><br><span class="line"><span class="comment"># 3层 长度7 非子节点最大索引7/2</span></span><br><span class="line">n1.r.r.v</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%A0%91/" rel="tag"># 树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/12/07/linked-list/" rel="next" title="linked-list">
+                <i class="fa fa-chevron-left"></i> linked-list
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E9%81%8D%E5%8E%86"><span class="nav-number">1.</span> <span class="nav-text">普通遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E7%A7%8D"><span class="nav-number">3.</span> <span class="nav-text">变种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E6%A0%91"><span class="nav-number">4.</span> <span class="nav-text">建树</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tricy Zhou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
