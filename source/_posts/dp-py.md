@@ -73,3 +73,19 @@ def climb2(n):
 # climb2(10)
 ```
 
+### 零钱兑换
+
+```python
+#### dp[i] = min(dp[i], dp[i-coins[j]]+1), dp[i]表示组成i金额最小硬币数
+def coinChange(coins, amount):
+    dp = [float("inf")]*(amount+1) 
+    dp[0] = 0
+    for i in range(1, amount+1): # 遍历总金额
+        for j in range(len(coins)): # 遍历硬币
+            if i>coins[j]:
+                dp[i] = min(dp[i],dp[i-coins[j]]+1)
+    if dp[-1]>amount:
+        return -1
+    return dp[-1]
+```
+
