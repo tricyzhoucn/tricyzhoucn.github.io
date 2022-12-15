@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Spark," />
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tricyzhou的笔记">
-<meta property="og:url" content="http://example.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.html">
+<meta name="description" content="Spark角色">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spark-role">
+<meta property="og:url" content="http://example.com/2022/12/15/spark-role/index.html">
 <meta property="og:site_name" content="tricyzhou的笔记">
+<meta property="og:description" content="Spark角色">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/12/15/spark-role/sparksubmit.png">
+<meta property="article:published_time" content="2022-12-15T02:45:04.000Z">
+<meta property="article:modified_time" content="2022-12-15T03:14:55.848Z">
 <meta property="article:author" content="Tricy Zhou">
+<meta property="article:tag" content="Spark">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/12/15/spark-role/sparksubmit.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/大数据/"/>
+  <link rel="canonical" href="http://example.com/2022/12/15/spark-role/"/>
 
 
 
 
 
-  <title>Tag: 大数据 | tricyzhou的笔记</title>
+  <title>spark-role | tricyzhou的笔记</title>
   
 
 
@@ -140,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,82 +221,212 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>大数据<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/15/spark-role/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tricyzhou的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2022/11/28/Data-Warehouse/" itemprop="url">
-              
-                <span itemprop="name">Data-Warehouse</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">spark-role</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-11-28T14:24:23+08:00"
-              content="2022-11-28" >
-          11-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-15T10:45:04+08:00">
+                2022-12-15
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <blockquote>
+<p>Spark角色</p>
+</blockquote>
+<span id="more"></span>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2022/11/25/spark-sql/" itemprop="url">
-              
-                <span itemprop="name">Spark-SQL</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-11-25T14:50:13+08:00"
-              content="2022-11-25" >
-          11-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<table>
+<thead>
+<tr>
+<th>角色名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Master</td>
+<td>常驻master守护进程，负责管理worker节点，从master节点提交应用</td>
+</tr>
+<tr>
+<td>Worker</td>
+<td>常驻worker守护进程，与master节点通信，并且管理executor进程，运行一个或多个Executor进程，相当于计算节点</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>用户提交作业的客户端</td>
+</tr>
+<tr>
+<td>Driver</td>
+<td>负责控制一个应用的执行，运行Application的main函数和初始化SparkContext，Driver将Task和Task所依赖的file和jar(序列化后)传递给对应的Worker机器执行</td>
+</tr>
+<tr>
+<td>Executor</td>
+<td>executor进程宿主在worker节点上，一个worker可以有多个executor，每个executor持有一个线程池，每个线程可以执行一个task，executor执行完task以后将结果返回driver，每个executor执行的task都属于同一个应用。此外executor还有一个功能就是为应用程序中要求缓存的RDD提供内存式存储，RDD是直接缓存在executor进程内的，因此任务可以运行时充分利用缓存加速运算。一个container对应一个JVM进程(也就是一个executor)</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>action的触发会生成一个job，job会提交给DAGScheduler，分解成Stage</td>
+</tr>
+<tr>
+<td>Stage</td>
+<td>DAGscheduler根据shuffle将job划分为不同的stage，同一个stage包含多个task，这些task有相同shuffle dependencies</td>
+</tr>
+<tr>
+<td>Task</td>
+<td>被送到executor上的工作单元，task简单来说就是在一个数据partition上单个数据处理流程</td>
+</tr>
+<tr>
+<td>Cluster Manager</td>
+<td>在集群上获取资源的外部服务(例如：Standalone、Mesos、Yarn)</td>
+</tr>
+<tr>
+<td>SparkContext</td>
+<td>整个应用的上下文，控制程序的生命周期</td>
+</tr>
+<tr>
+<td>DAGScheduler</td>
+<td>根据Job构建基于Stage的DAG工作流，并提交Stage给TaskScheduler</td>
+</tr>
+<tr>
+<td>TaskScheduler</td>
+<td>将task发给Executor执行</td>
+</tr>
+<tr>
+<td>SparkEnv</td>
+<td>线程级别的上下文，存储运行时的重要组件的引用</td>
+</tr>
+</tbody></table>
+<p><img src="/2022/12/15/spark-role/sparksubmit.png" alt="sparkonyarn"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spark/" rel="tag"># Spark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/12/15/spark-yarn/" rel="next" title="spark-yarn">
+                <i class="fa fa-chevron-left"></i> spark-yarn
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -297,6 +434,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -502,6 +643,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

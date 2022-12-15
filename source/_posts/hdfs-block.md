@@ -6,6 +6,8 @@ tags: HDFS
 
 > HDFS block介绍
 
+<!-- more -->
+
 ### 介绍
 
 HDFS文件在物理上是分块存储(block)，块大小通过参数dfs.blocksize控制，hadoop2.x默认128M，老版本64M；
