@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spark," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spark汇总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spark-opt">
+<meta property="og:url" content="http://example.com/2022/12/09/spark-opt/index.html">
+<meta property="og:site_name" content="tricyzhou的笔记">
+<meta property="og:description" content="Spark汇总">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/12/09/spark-opt/spark-submit.png">
+<meta property="og:image" content="http://example.com/2022/12/09/spark-opt/hashshufflemanager.png">
+<meta property="og:image" content="http://example.com/2022/12/09/spark-opt/hashshufflemanageropt.png">
+<meta property="og:image" content="http://example.com/2022/12/09/spark-opt/sortshufflemanager.png">
+<meta property="og:image" content="http://example.com/2022/12/09/spark-opt/bypass.png">
+<meta property="article:published_time" content="2022-12-09T07:55:51.000Z">
+<meta property="article:modified_time" content="2022-12-19T01:30:52.684Z">
+<meta property="article:author" content="Tricy Zhou">
+<meta property="article:tag" content="Spark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/12/09/spark-opt/spark-submit.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2022/12/09/spark-opt/"/>
+
+
+
+
+
+  <title>spark-opt | tricyzhou的笔记</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">tricyzhou的笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/09/spark-opt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tricyzhou的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spark-opt</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-09T15:55:51+08:00">
+                2022-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Spark汇总</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="Spark优化原则"><a href="#Spark优化原则" class="headerlink" title="Spark优化原则"></a>Spark优化原则</h3><h4 id="原则1-避免创建重复的RDD"><a href="#原则1-避免创建重复的RDD" class="headerlink" title="原则1:避免创建重复的RDD"></a>原则1:避免创建重复的RDD</h4><h4 id="原则2-尽可能复用同一个RDD"><a href="#原则2-尽可能复用同一个RDD" class="headerlink" title="原则2:尽可能复用同一个RDD"></a>原则2:尽可能复用同一个RDD</h4><h4 id="原则3-对多次使用的RDD进行持久化"><a href="#原则3-对多次使用的RDD进行持久化" class="headerlink" title="原则3:对多次使用的RDD进行持久化"></a>原则3:对多次使用的RDD进行持久化</h4><p>cache() 使用<strong>非序列化</strong>的方法将RDD中的数据全部尝试持久化到内存中；</p>
+<p>persist() 选择持久化级别、方式进行持久化。_SER后缀表示序列化后保存，每个Partition会被序列化一个大的字节数组，然后持久化到内存或磁盘，减少数据占用内存过多，避免频繁GC；</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MEMORY_ONLY</td>
+<td>默认，放内存，同cache()，内存不够就不持久化，算子操作时候从源头计算一遍；</td>
+</tr>
+<tr>
+<td>MEMORY_AND_RISK</td>
+<td>内存不够放磁盘，算子操作时从磁盘中取出来用；</td>
+</tr>
+<tr>
+<td>MEMORY_ONLY_SER</td>
+<td>同MEMORY_ONLY，区别是序列化，节省内存避免频繁GC；</td>
+</tr>
+<tr>
+<td>MEMORY_AND_DISK_SER</td>
+<td>同MEMORY_ONLY_SER，区别是序列化，节省内存避免频繁GC；</td>
+</tr>
+<tr>
+<td>DISK_ONLY</td>
+<td>放磁盘；</td>
+</tr>
+<tr>
+<td>*_2</td>
+<td>上面的所有策略+_2后缀表示每个持久化数据都有副本放其他节点，容灾；</td>
+</tr>
+</tbody></table>
+<h4 id="原则4-尽量避免使用shuffle类算子"><a href="#原则4-尽量避免使用shuffle类算子" class="headerlink" title="原则4:尽量避免使用shuffle类算子"></a>原则4:尽量避免使用shuffle类算子</h4><p>shuffle解释：将分布在集群多个节点上的同一个key，拉取到同一个节点上，进行聚合或join等操作，比如，reduceByKey、join、distinct、repartition等，应该尽量使用map类操作替代;</p>
+<p>shuffle过程：各个节点相同key都会先写磁盘，其他节点通过网络传输拉取各个节点磁盘文件中相同key，节点内存不够溢写磁盘，大量的磁盘IO和网络传输导致shuffle性能较差；</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// broadcast+map替代join</span></span><br><span class="line"><span class="keyword">val</span> rdd3 = rdd1.join(rdd2)</span><br><span class="line"><span class="comment">// broadcast+map不会产生shuffle 适用于rdd2数据量较少 &lt;2G </span></span><br><span class="line"><span class="keyword">val</span> rdd2Data = rdd2.collect()</span><br><span class="line"><span class="keyword">val</span> rdd2DataBroadcast = sc.broadcast(rdd2Data) <span class="comment">// 每个Executer都有一份rdd2了</span></span><br><span class="line"><span class="keyword">val</span> rdd3 = rdd1.map(rdd2DataBroadcast...)<span class="comment">// 找到相同key然后处理</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="原则5-使用map-side预聚合的shuffle操作"><a href="#原则5-使用map-side预聚合的shuffle操作" class="headerlink" title="原则5:使用map-side预聚合的shuffle操作"></a>原则5:使用map-side预聚合的shuffle操作</h4><h4 id="原则6-使用高性能算子"><a href="#原则6-使用高性能算子" class="headerlink" title="原则6:使用高性能算子"></a>原则6:使用高性能算子</h4><p>groupByKey是直接shuffle，reduceByKey和aggregateByKey先预聚合再shuffle，区别是后者可以指定初始值并且partition内部和之间的聚合操作可以不同，如果相同可以用foldByKey，</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">AggByKeyOpt</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> sparkConf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(<span class="string">&quot;test&quot;</span>).setMaster(<span class="string">&quot;local&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(sparkConf)</span><br><span class="line">    <span class="keyword">val</span> data = <span class="type">Seq</span>((<span class="number">1</span>,<span class="number">3</span>),(<span class="number">1</span>,<span class="number">2</span>),(<span class="number">1</span>,<span class="number">4</span>),(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">    <span class="keyword">val</span> rdd = sc.parallelize(data, <span class="number">2</span>)</span><br><span class="line">    <span class="comment">//合并不同partition中的值，a，b得数据类型为zeroValue的数据类型</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combOp</span></span>(a:<span class="type">String</span>,b:<span class="type">String</span>):<span class="type">String</span>=&#123;</span><br><span class="line">      println(<span class="string">&quot;combOp: &quot;</span>+a+<span class="string">&quot;\t&quot;</span>+b)</span><br><span class="line">      a+b</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//合并在同一个partition中的值，a的数据类型为zeroValue的数据类型，b的数据类型为原value的数据类型</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">seqOp</span></span>(a:<span class="type">String</span>,b:<span class="type">Int</span>):<span class="type">String</span>=&#123;</span><br><span class="line">      println(<span class="string">&quot;SeqOp:&quot;</span>+a+<span class="string">&quot;\t&quot;</span>+b)</span><br><span class="line">      a+b</span><br><span class="line">    &#125;</span><br><span class="line">    rdd.foreach(println)</span><br><span class="line">    <span class="keyword">val</span> aggregateByKeyRDD=rdd.aggregateByKey(<span class="string">&quot;100&quot;</span>)(seqOp, combOp)</span><br><span class="line">    aggregateByKeyRDD.foreach(println)</span><br><span class="line">    sc.stop()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mapPartitions代替map，一次函数调用处理一个partition而非单条，容易OOM，如果内存不够垃圾回收无法回收太多对象；</p>
+<p>foreachPartitions代替foreach，对于每个partition如果连接mysql连接一次就可以；</p>
+<p>filter之后使用coaleasce操作，将rdd压缩到更少partition使用更少task处理；</p>
+<p>repartitionAndSortWithinPartitions代替repartition与sort操作，shuffle和sort同时进行，性能更高；</p>
+<h4 id="原则7-广播大变量"><a href="#原则7-广播大变量" class="headerlink" title="原则7:广播大变量"></a>原则7:广播大变量</h4><p>大变量，100M以上，默认情况下会复制多份传输到task中，大量变量副本消耗网络传输，在各个节点Executor中占用过多内存频繁GC，广播的话，每个Executor只保留一份副本，Executor中的task共用；</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list1 = ...</span><br><span class="line"><span class="keyword">val</span> list1Broadcast = sc.broadcast(list1)</span><br><span class="line">rdd1.map(list1Broadcast...)</span><br></pre></td></tr></table></figure>
+
+<h4 id="原则8-使用Kryo优化序列化性能"><a href="#原则8-使用Kryo优化序列化性能" class="headerlink" title="原则8 使用Kryo优化序列化性能"></a>原则8 使用Kryo优化序列化性能</h4><p>Spark中三个地方涉及到了序列化：</p>
+<ul>
+<li>算子函数使用外部变量时，变量会被序列化后进行网络传输；</li>
+<li>自定义类型作为RDD的范型时，会进行序列化，要求自定义类实现Serializable接口；</li>
+<li>使用可序列化的持久化策略时，例如MEMORY_ONLY_SER；</li>
+</ul>
+<p>Spark默认使用Java序列化机制，ObjectOutputStream/ObjectInputStream API进行序列化和反序列化，使用Kryo性能提高10倍；</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建SparkConf对象。</span></span><br><span class="line"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setMaster(...).setAppName(...)</span><br><span class="line"><span class="comment">// 设置序列化器为KryoSerializer。</span></span><br><span class="line">conf.set(<span class="string">&quot;spark.serializer&quot;</span>, <span class="string">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>)</span><br><span class="line"><span class="comment">// 注册要序列化的自定义类型。</span></span><br><span class="line">conf.registerKryoClasses(<span class="type">Array</span>(classOf[<span class="type">MyClass1</span>], classOf[<span class="type">MyClass2</span>]))</span><br></pre></td></tr></table></figure>
+
+<h4 id="原则9-优化数据结构"><a href="#原则9-优化数据结构" class="headerlink" title="原则9:优化数据结构"></a>原则9:优化数据结构</h4><p>三种数据类型比较耗费内存:1)对象，每个Java对象都有对象头、引用等额外信息，比较占用内存；2)字符串，每个字符串内部都有一个字符数组以及长度等信息；3）集合类型，比如HashMap、LinkedList等，因为集合类型内部通常会使用一些内部类来封装集合元素，比如Map.Entry；</p>
+<p>官方建议，使用原始类型比如Int、long代替字符串，数组代替集合类型，减少内存占用，降低GC频率，提升性能；</p>
+<h3 id="Spark作业基本运行原理"><a href="#Spark作业基本运行原理" class="headerlink" title="Spark作业基本运行原理"></a>Spark作业基本运行原理</h3><p><img src="/2022/12/09/spark-opt/spark-submit.png" alt="spark-submit"></p>
+<p>spark-submit提交Spark作业，启动一个对应Driver进程，根据部署模式不同，本地启动或者集群某个工作节点启动。Driver会占用一定数量的内存和CPU core。Driver进程首先向资源管理集群(Yarn等)申请资源，资源指的是Executor进行，资源管理集群会根据资源参数，在各个工作节点上启动一定数量的Executor进程，每个Executor进程会占用一定数量的内存和CPU core；</p>
+<p>资源到位，Driver开始将Spark作业拆分多个stage，并为每个stage创建一批task，然后将task分配到Executor执行，task是最小的计算单元，负责执行一摸一样的计算逻辑(代码片段)，stage的所有task执行完毕之后，中间结果写入本地磁盘，Driver开始调度运行下一个stage，输入数据是上一个stage中间结果，直到全部执行；</p>
+<p>Spark根据shuffle类算子进行stage划分，每个stage会通过网络传输拉取需要自己处理的所有相同key，然后进行聚合操作，这就是shuffle；</p>
+<p>cache/persist会把task计算出来的数据保存到Executor进程的内存或者所在节点的磁盘文件中；</p>
+<p>Executor内存模型：20%执行task逻辑，20%执行shuffle操作，60%执行RDD持久化，详见参考(3)；</p>
+<p>task执行速度和CPU core直接相关，task执行独占CPU core；</p>
+<h4 id="num-executors"><a href="#num-executors" class="headerlink" title="num-executors"></a>num-executors</h4><p>Spark作业总共要用多少Executor进程执行，太少无法充分利用集群资源，太多队列无法给予，一般50-100；</p>
+<h4 id="executor-memory"><a href="#executor-memory" class="headerlink" title="executor-memory"></a>executor-memory</h4><p>Executor内存大小决定Spark作业性能，太小容易OOM，一般4G-8G；</p>
+<h4 id="executor-cores"><a href="#executor-cores" class="headerlink" title="executor-cores"></a>executor-cores</h4><p>每个Executor进程的CPU core数量，越多执行越快，一般2-4；</p>
+<h4 id="driver-memory"><a href="#driver-memory" class="headerlink" title="driver-memory"></a>driver-memory</h4><p>设置Driver进程内存，如果使用collect算子会将RDD数据拉到Driver上进行处理需要更多内存否则OOM，否则，一般1G；</p>
+<h4 id="spark-default-parallelism"><a href="#spark-default-parallelism" class="headerlink" title="spark.default.parallelism"></a>spark.default.parallelism</h4><p>每个stage默认task数量，默认是根据底层HDFS block(hadoop2.x是128M)数量，通常默认很少(几十)，官网建议num-executors*executor-cores的2-3倍，一般500-1000；</p>
+<h4 id="spark-storage-memoryFraction"><a href="#spark-storage-memoryFraction" class="headerlink" title="spark.storage.memoryFraction"></a>spark.storage.memoryFraction</h4><p>RDD持久化数据在Executor内存占比，默认0.6，如果内存不够就写磁盘，持久化操作多就提高，shuffle类操作多就降低，频繁GC说明执行task逻辑内存不够也降低(通过spark web ui查看gc耗时)；</p>
+<h4 id="spark-shuffle-memoryFraction"><a href="#spark-shuffle-memoryFraction" class="headerlink" title="spark.shuffle.memoryFraction"></a>spark.shuffle.memoryFraction</h4><p>shuffle过程中拉到上个stage输出后，进行聚。合操作能使用的Executor内存比例，默认0.2，超过溢写磁盘，降低性能。如果RDD持久化操作少，shuffle操作多建议提高，如果作业频繁GC导致运行缓慢，意味着task逻辑执行内存不够，建议降低；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line">./bin/spark-submit \</span><br><span class="line">  --master yarn-cluster \</span><br><span class="line">  --num-executors 100 \</span><br><span class="line">  --executor-memory 6G \</span><br><span class="line">  --executor-cores 4 \</span><br><span class="line">  --driver-memory 1G \</span><br><span class="line">  --conf spark.default.parallelism=1000 \</span><br><span class="line">  --conf spark.storage.memoryFraction=0.5 \</span><br><span class="line">  --conf spark.shuffle.memoryFraction=0.3 \</span><br></pre></td></tr></table></figure>
+
+<h3 id="Spark数据倾斜处理"><a href="#Spark数据倾斜处理" class="headerlink" title="Spark数据倾斜处理"></a>Spark数据倾斜处理</h3><h4 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h4><p>1）个别task执行慢</p>
+<p>2）突然OOM异常</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>进行shuffle时候，某个key对应数据量特别大，spark运行进度是由运行时间最长的task决定；</p>
+<h4 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h4><p>可能触发shuffle操作算子：distinct、groupByKey、reduceByKey、aggregateByKey、join、cogroup(对两个RDD中的KV元素,每个RDD中相同key中的元素分别聚合成一个集合)、repartition等；</p>
+<p>Spark Web UI查看stage各个task分配的数据量、运行时间；</p>
+<p>推算stage与代码关系：shuffle类算子前后会分两个stage，如下，reduceByKey前后会划分两个stage，stage0执行textFile到map以及shuffle write操作，每个task处理的数据中，相同key会写入同一个磁盘文件；stage1执行reduceByKey到collect操作，首先执行shuffle read操作，会从stage0各个task所在节点拉取需要key，然后对相同key进行聚合或者join操作，在这里是对相同key的value累加，最后执行collect算子，将所有数据拉到Driver上打印输出；</p>
+<p>查看key分布：直接通过sparksql查看key分布，如果是RDD文件可以通过RDD.countByKey()之后collect/take打印；</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单词计数</span></span><br><span class="line"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>()</span><br><span class="line"><span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br><span class="line"><span class="keyword">val</span> lines = sc.textFile(<span class="string">&quot;hdfs://...&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> words = lines.flatMap(_.split(<span class="string">&quot; &quot;</span>))</span><br><span class="line"><span class="keyword">val</span> pairs = words.map((_,<span class="number">1</span>))</span><br><span class="line"><span class="keyword">val</span> wordCounts = pairs.reduceByKey(_ + _) <span class="comment">// </span></span><br><span class="line">wordCounts.collect().foreach(println(_))</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决方案1：使用Hive-ETL预处理数据"><a href="#解决方案1：使用Hive-ETL预处理数据" class="headerlink" title="解决方案1：使用Hive ETL预处理数据"></a>解决方案1：使用Hive ETL预处理数据</h4><p>预先聚合或join，将数据倾斜发生提前，减少spark shuffle时间，治标不治本，还是会发生倾斜；</p>
+<h4 id="解决方案2：过滤少数导致倾斜的key"><a href="#解决方案2：过滤少数导致倾斜的key" class="headerlink" title="解决方案2：过滤少数导致倾斜的key"></a>解决方案2：过滤少数导致倾斜的key</h4><h4 id="解决方案3：提高shuffle操作的并行度"><a href="#解决方案3：提高shuffle操作的并行度" class="headerlink" title="解决方案3：提高shuffle操作的并行度"></a>解决方案3：提高shuffle操作的并行度</h4><p>reduceByKey(1000)，增加shuffle read task并行度，spark.sql.shuffle.partitions就代表该并行度，默认值200，200个task不够，会导致单task分配过多数据，增多可以减少单task执行时间(原来单task分配5个key，增加之后只分1个key)。实现简单，但是效果有限，因为如果单key对应数据太多没法再分；</p>
+<h4 id="解决方案4：两阶段聚合-局部聚合-全局聚合"><a href="#解决方案4：两阶段聚合-局部聚合-全局聚合" class="headerlink" title="解决方案4：两阶段聚合(局部聚合+全局聚合)"></a>解决方案4：两阶段聚合(局部聚合+全局聚合)</h4><p>首先局部聚合，key+随机前缀，然后执行reduceByKey等操作，之后去掉key随机前缀，在进行全局聚合，得到最终结果；适用于聚合类shuffle操作，不适用于join类shuffle操作；</p>
+<h4 id="解决方案5：将reduce-join转为map-join"><a href="#解决方案5：将reduce-join转为map-join" class="headerlink" title="解决方案5：将reduce join转为map join"></a>解决方案5：将reduce join转为map join</h4><p>适用于join类操作时其中一个RDD或表较小(&lt;2G)，使用broadcast变量完全规避shuffle，使用map进行连接；将较小的RDD直接通过collect算子拉取到Driver端内存再分发到Executor；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Tuple2&lt;Long, Row&gt;&gt; rdd1Data = rdd1.collect();</span><br><span class="line"><span class="keyword">final</span> Broadcast&lt;List&lt;Tuple2&lt;Long, Row&gt;&gt;&gt; rdd1DataBroadcast = sc.broadcast(rdd1Data); <span class="comment">// 广播</span></span><br><span class="line">JavaPairRDD&lt;String,Tuple2&lt;String,Row&gt;&gt; joinedRdd = rdd2.mapToPair(</span><br><span class="line">	<span class="keyword">new</span> PairFunction&lt;Tuple2&lt;Long,String&gt;,String,Tuple2&lt;String,Row&gt;&gt;()&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="keyword">public</span> Tuple2&lt;String, Tuple2&lt;String, Row&gt;&gt; call(Tuple2&lt;Long, String&gt; tuple) <span class="keyword">throw</span> Exception&#123;</span><br><span class="line">      List&lt;Tuple2&lt;Long, Row&gt;&gt; rdd1Data = rdd1DataBroadcast.value(); <span class="comment">// 获取广播变量</span></span><br><span class="line">      Map&lt;Long, Row&gt; rdd1DataMap = <span class="keyword">new</span> HashMap&lt;Long, Row&gt;(); <span class="comment">// 广播变量转化为Map</span></span><br><span class="line">      <span class="keyword">for</span>(Tuple2&lt;Long, Row&gt; data: rdd1Data)&#123;</span><br><span class="line">        rdd1DataMap.put(data._1, data._2);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 获取当前rdd的key和value</span></span><br><span class="line">      String key = tuple._1;</span><br><span class="line">      String value = tuple._2;</span><br><span class="line">      Row rdd1Value = rdd1DataMap.get(key); <span class="comment">// 获取join到数据</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Tuple2&lt;String, String&gt;(key, <span class="keyword">new</span> Tuple2&lt;String, Row&gt;(value, rdd1Value));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决方案6：采样倾斜key并分拆join操作"><a href="#解决方案6：采样倾斜key并分拆join操作" class="headerlink" title="解决方案6：采样倾斜key并分拆join操作"></a>解决方案6：采样倾斜key并分拆join操作</h4><p>左表/RDD少数key数量大右表/RDD分布均匀时，左边sample算子采样出数量大的n个key，然后将拆分，加上n以内随机数前缀，右边也过滤出这些key也加上n以内前缀膨胀n倍，左右拆分出来的做join，未拆分出来的也做join，然后union结果，就是最终的结果；适用于倾斜key少的时候；</p>
+<h4 id="解决方案7：随机前缀和扩容RDD进行join"><a href="#解决方案7：随机前缀和扩容RDD进行join" class="headerlink" title="解决方案7：随机前缀和扩容RDD进行join"></a>解决方案7：随机前缀和扩容RDD进行join</h4><p>适用于在join操作时，RDD中有大量key导致数据倾斜，分拆没意义，左边所有都加n以内随机前缀，右边稳定扩容n倍，然后左右join；</p>
+<h4 id="解决方案8：多种方案组合使用"><a href="#解决方案8：多种方案组合使用" class="headerlink" title="解决方案8：多种方案组合使用"></a>解决方案8：多种方案组合使用</h4><p>针对复杂场景，需要多种方案组合使用，针对多环节数据倾斜spark作业，可以先预处理，其次可以shuffle操作提高并行度，最后针对不同的聚合或join操作，才用两段聚合、随机前缀等方案；</p>
+<h3 id="Shuffle调优"><a href="#Shuffle调优" class="headerlink" title="Shuffle调优"></a>Shuffle调优</h3><h4 id="HashShuffleManager运行原理"><a href="#HashShuffleManager运行原理" class="headerlink" title="HashShuffleManager运行原理"></a>HashShuffleManager运行原理</h4><p>假设前提：每个Executor只分配1个CPU core，也就是说无论这个Executor上分配多少个task线程，同一时间只能执行一个task线程；</p>
+<h5 id="未经优化的HashShuffleManager"><a href="#未经优化的HashShuffleManager" class="headerlink" title="未经优化的HashShuffleManager"></a>未经优化的HashShuffleManager</h5><p>shuffle write：当前stage的每个task要为下个stage创建多少份磁盘文件？下个stage有多少task就要创建多少！下个stage有100个task，当前stage的每个task就要创建100份磁盘文件。如果当前stage有50个task，总共有10个Executor，那么每个Executor执行5个task，每个Executor会创建500个磁盘文件；</p>
+<p>shuffle read：通常是一个stage刚开始要做的事，该stage中的每个task从上个stage拉取相同key，网络传输到自己所在节点，然后聚合或连接；此时上个stage中的task已经分好了给下个stage每个task的磁盘文件，直接拉取；</p>
+<p>shuffle read的拉取过程是一边拉取一边聚合的，每个shuffle read task都有自己的buffer缓冲，每次都只能拉取与buffer缓冲相同大小的数据，然后通过内存中的Map进行聚合等操作，聚合完一批再拉下一批；</p>
+<p><img src="/2022/12/09/spark-opt/hashshufflemanager.png" alt="hashshufflemanager"></p>
+<h5 id="优化后的HashShuffleManager"><a href="#优化后的HashShuffleManager" class="headerlink" title="优化后的HashShuffleManager"></a>优化后的HashShuffleManager</h5><p>设置参数spark.shuffle.consolidateFiles=true，默认是false。出现shuffleFileGroup概念，CPU core决定可以并行task数量，每个Executor上磁盘文件数此时取决于CPU core数量*stage的task数量，consolidate机制使不同task可以复用同一批磁盘文件。减少磁盘文件数量，提升shuffle write性能；</p>
+<p><img src="/2022/12/09/spark-opt/hashshufflemanageropt.png" alt="hashshufflemanageropt"></p>
+<h4 id="SortShuffleManager运行原理"><a href="#SortShuffleManager运行原理" class="headerlink" title="SortShuffleManager运行原理"></a>SortShuffleManager运行原理</h4><p>SortShuffleManager分为普通运行机制和bypass运行机制，当shuffle read task的数量小于等于spark.shuffle.sort.bypassMergeThreshold参数值时(默认200)，就启用bypass机制；</p>
+<h5 id="普通运行机制"><a href="#普通运行机制" class="headerlink" title="普通运行机制"></a>普通运行机制</h5><p>排序之后分批(1万条)溢写磁盘，写入磁盘是通过java的BufferedOutputStream实现，先缓冲内存，内存满了之后溢写磁盘，每个task最终只有一个磁盘文件，但是会有一个索引文件，标识下游各个task需要数据的start offset和end offset；</p>
+<p><img src="/2022/12/09/spark-opt/sortshufflemanager.png" alt="sortshufflemanager"></p>
+<h5 id="bypass运行机制"><a href="#bypass运行机制" class="headerlink" title="bypass运行机制"></a>bypass运行机制</h5><p>触发条件：shuffle map task数量小于spark.shuffle.sort.bypassMergeThreshold参数的值，不是聚合类的shuffle算子(例如reduceByKey)；</p>
+<p>此时task会为每个下游task通过hash创建一个临时磁盘文件，类似于HashShuffleManager未优化版本，但是最终会做一个磁盘文件的合并，所以相对来说shuffle read性能会好些；</p>
+<p>相较于SortShuffleManager普通机制，磁盘写机制不同，不会进行排序；</p>
+<p><img src="/2022/12/09/spark-opt/bypass.png" alt="bypass"></p>
+<h4 id="spark-shuffle-file-buffer"><a href="#spark-shuffle-file-buffer" class="headerlink" title="spark.shuffle.file.buffer"></a>spark.shuffle.file.buffer</h4><p>默认值：32k</p>
+<p>参数说明：设置shuffle write task的BufferedOutputStream的buffer缓冲大小，将数据写到磁盘文件之前，会先写到buffer缓冲中，待缓冲写满之后，才会溢写磁盘；</p>
+<p>调优建议：如果作业可用的内存资源较为充足的话，可以适当增加这个参数的大小(比如64k)，从而减少shuffle write过程中溢写磁盘文件的次数，也就可以减少磁盘IO次数，进而提升性能。合理调节，1%-5%性能提升；</p>
+<h4 id="spark-reducer-maxSizeInFlight"><a href="#spark-reducer-maxSizeInFlight" class="headerlink" title="spark.reducer.maxSizeInFlight"></a>spark.reducer.maxSizeInFlight</h4><p>默认值：48M</p>
+<p>参数说明：该参数用于设置shuffle read task的buffer缓冲大小，这个buffer缓冲决定了每次拉取多少数据</p>
+<p>调优建议：如果作业可用的内存资源较为充足的话，可以适当增加这个参数的大小(比如96m)，从而减少拉取数据的次数，也就可以减少网络传输的次数，进而提升性能。合理调节，1%-5%性能提升；</p>
+<h4 id="spark-shuffle-io-maxRetries"><a href="#spark-shuffle-io-maxRetries" class="headerlink" title="spark.shuffle.io.maxRetries"></a>spark.shuffle.io.maxRetries</h4><p>默认值：3</p>
+<p>参数说明：shuffle read task从shuffle write task所在节点拉取自己的数据时，如果因为网络异常导致拉取失败，是会自动进行重试的。该参数代表可以重试的最大次数，如果在指定次数之内拉取还没成功，就可能导致作业执行失败。</p>
+<p>调优建议：对于那些包含特别耗时的shuffle操作作业，建议增加重试最大次数(比如60次)，以避免JVM的full gc或者网络不稳定等因素导致数据拉取失败。对于超大数据量(数十亿-上百亿)的shuffle过程，调节该参数可以大幅度提升稳定性；</p>
+<h4 id="spark-shuffle-io-retryWait"><a href="#spark-shuffle-io-retryWait" class="headerlink" title="spark.shuffle.io.retryWait"></a>spark.shuffle.io.retryWait</h4><p>默认值：5s</p>
+<p>参数说明：代表每次重试拉取数据的等待间隔，默认是5s。</p>
+<p>调优建议：建议加大间隔时长，以增加shuffle操作的稳定性。</p>
+<h4 id="spark-shuffle-memoryFraction-1"><a href="#spark-shuffle-memoryFraction-1" class="headerlink" title="spark.shuffle.memoryFraction"></a>spark.shuffle.memoryFraction</h4><p>默认值：0.2</p>
+<p>参数说明：该参数代表Executor内存中，分配给shuffle read task进行聚合操作的内存比例，默认是20%。</p>
+<p>调优建议：如果内存充足，而且很少使用持久化操作，建议提高这个比例，给shuffle read的聚合操作更多内存，以避免由于内存不足聚合过程中频繁读写磁盘。实践过程中，合理调节，10%性能提升；</p>
+<h4 id="spark-shuffle-manager"><a href="#spark-shuffle-manager" class="headerlink" title="spark.shuffle.manager"></a>spark.shuffle.manager</h4><p>默认值：sort</p>
+<p>参数说明：该参数用于设置ShuffleManager的类型。Spark1.5之后，有三个可选项：hash、sort和tungsten-sort。HashShuffleManager是Spark1.2之前的默认选项，但是spark 1.2之后版本默认都是SortShuffleManager了。tungsten-sort与sort类似，但是使用了tungsten计划中的堆外内存管理机制，内存使用效率更高；</p>
+<p>调优建议：SortShuffleManager默认会对数据进行排序，如果业务逻辑需要该排序机制的话，则使用默认的SortShuffleManager就可以，如果不需要对数据进行排序，通过bypass机制或优化的HashShuffleManager来避免排序操作，同时提供较好的磁盘读写性能。tungsten-sort慎用～</p>
+<h4 id="spark-shuffle-sort-bypassMergeThreshold"><a href="#spark-shuffle-sort-bypassMergeThreshold" class="headerlink" title="spark.shuffle.sort.bypassMergeThreshold"></a>spark.shuffle.sort.bypassMergeThreshold</h4><p>默认值：200</p>
+<p>参数说明：当ShuffleManager为SortShuffleManager时，如果shuffle read task的数量小于这个阈值时，则shuffle write不会进行排序操作，而是按照未经优化的HashShuffleManager的方式写数据，最后会将每个task产生的所有临时磁盘文件都合并成一个文件，并会创建单独的索引文件；</p>
+<p>调优建议：当使用SortShuffleManager时，如果的确不需要排序操作，调大参数，大于shuffle read task的数量，会自动启用bypass机制，map-side就不会进行排序了，减少了排序性能开销，但是依然会产生大量磁盘文件，因此shuffle write性能有待提高；</p>
+<h4 id="spark-shuffle-consolidateFiles"><a href="#spark-shuffle-consolidateFiles" class="headerlink" title="spark.shuffle.consolidateFiles"></a>spark.shuffle.consolidateFiles</h4><p>默认值：false</p>
+<p>参数说明：如果使用了HashShuffleManager，该参数有效，如果设置了true，那么就会开启consolidate机制，会大幅度合并shuffle write的输出文件，对于shuffle read task数量特别多的情况下，这种方法可以极大减少磁盘IO开销，提升性能；</p>
+<p>调优建议：如果的确不需要SortShuffleManager排序机制，除了使用bypass还可以将spark.shuffle.manager设置为hash，使用HashShuffleManager，同时开启consolidate机制。实践表示，性能比开启bypass的SortShuffleManager要高出10%-30%；</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>(1)<a target="_blank" rel="noopener" href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html">https://tech.meituan.com/2016/04/29/spark-tuning-basic.html</a></p>
+<p>(2)<a target="_blank" rel="noopener" href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html">https://tech.meituan.com/2016/05/12/spark-tuning-pro.html</a></p>
+<p>(3)<a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/325349">https://bbs.huaweicloud.com/blogs/325349</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spark/" rel="tag"># Spark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/12/09/dp-py/" rel="next" title="dp-py">
+                <i class="fa fa-chevron-left"></i> dp-py
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/12/14/hdfs-block/" rel="prev" title="hdfs-block">
+                hdfs-block <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark%E4%BC%98%E5%8C%96%E5%8E%9F%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">Spark优化原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%991-%E9%81%BF%E5%85%8D%E5%88%9B%E5%BB%BA%E9%87%8D%E5%A4%8D%E7%9A%84RDD"><span class="nav-number">1.1.</span> <span class="nav-text">原则1:避免创建重复的RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%992-%E5%B0%BD%E5%8F%AF%E8%83%BD%E5%A4%8D%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AARDD"><span class="nav-number">1.2.</span> <span class="nav-text">原则2:尽可能复用同一个RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%993-%E5%AF%B9%E5%A4%9A%E6%AC%A1%E4%BD%BF%E7%94%A8%E7%9A%84RDD%E8%BF%9B%E8%A1%8C%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">原则3:对多次使用的RDD进行持久化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%994-%E5%B0%BD%E9%87%8F%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8shuffle%E7%B1%BB%E7%AE%97%E5%AD%90"><span class="nav-number">1.4.</span> <span class="nav-text">原则4:尽量避免使用shuffle类算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%995-%E4%BD%BF%E7%94%A8map-side%E9%A2%84%E8%81%9A%E5%90%88%E7%9A%84shuffle%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">原则5:使用map-side预聚合的shuffle操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%996-%E4%BD%BF%E7%94%A8%E9%AB%98%E6%80%A7%E8%83%BD%E7%AE%97%E5%AD%90"><span class="nav-number">1.6.</span> <span class="nav-text">原则6:使用高性能算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%997-%E5%B9%BF%E6%92%AD%E5%A4%A7%E5%8F%98%E9%87%8F"><span class="nav-number">1.7.</span> <span class="nav-text">原则7:广播大变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%998-%E4%BD%BF%E7%94%A8Kryo%E4%BC%98%E5%8C%96%E5%BA%8F%E5%88%97%E5%8C%96%E6%80%A7%E8%83%BD"><span class="nav-number">1.8.</span> <span class="nav-text">原则8 使用Kryo优化序列化性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%88%999-%E4%BC%98%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.9.</span> <span class="nav-text">原则9:优化数据结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark%E4%BD%9C%E4%B8%9A%E5%9F%BA%E6%9C%AC%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">Spark作业基本运行原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#num-executors"><span class="nav-number">2.1.</span> <span class="nav-text">num-executors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#executor-memory"><span class="nav-number">2.2.</span> <span class="nav-text">executor-memory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#executor-cores"><span class="nav-number">2.3.</span> <span class="nav-text">executor-cores</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#driver-memory"><span class="nav-number">2.4.</span> <span class="nav-text">driver-memory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-default-parallelism"><span class="nav-number">2.5.</span> <span class="nav-text">spark.default.parallelism</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-storage-memoryFraction"><span class="nav-number">2.6.</span> <span class="nav-text">spark.storage.memoryFraction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-memoryFraction"><span class="nav-number">2.7.</span> <span class="nav-text">spark.shuffle.memoryFraction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">Spark数据倾斜处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%B0%E8%B1%A1"><span class="nav-number">3.1.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D"><span class="nav-number">3.3.</span> <span class="nav-text">定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%881%EF%BC%9A%E4%BD%BF%E7%94%A8Hive-ETL%E9%A2%84%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE"><span class="nav-number">3.4.</span> <span class="nav-text">解决方案1：使用Hive ETL预处理数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%882%EF%BC%9A%E8%BF%87%E6%BB%A4%E5%B0%91%E6%95%B0%E5%AF%BC%E8%87%B4%E5%80%BE%E6%96%9C%E7%9A%84key"><span class="nav-number">3.5.</span> <span class="nav-text">解决方案2：过滤少数导致倾斜的key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%883%EF%BC%9A%E6%8F%90%E9%AB%98shuffle%E6%93%8D%E4%BD%9C%E7%9A%84%E5%B9%B6%E8%A1%8C%E5%BA%A6"><span class="nav-number">3.6.</span> <span class="nav-text">解决方案3：提高shuffle操作的并行度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%884%EF%BC%9A%E4%B8%A4%E9%98%B6%E6%AE%B5%E8%81%9A%E5%90%88-%E5%B1%80%E9%83%A8%E8%81%9A%E5%90%88-%E5%85%A8%E5%B1%80%E8%81%9A%E5%90%88"><span class="nav-number">3.7.</span> <span class="nav-text">解决方案4：两阶段聚合(局部聚合+全局聚合)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%885%EF%BC%9A%E5%B0%86reduce-join%E8%BD%AC%E4%B8%BAmap-join"><span class="nav-number">3.8.</span> <span class="nav-text">解决方案5：将reduce join转为map join</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%886%EF%BC%9A%E9%87%87%E6%A0%B7%E5%80%BE%E6%96%9Ckey%E5%B9%B6%E5%88%86%E6%8B%86join%E6%93%8D%E4%BD%9C"><span class="nav-number">3.9.</span> <span class="nav-text">解决方案6：采样倾斜key并分拆join操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%887%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%89%8D%E7%BC%80%E5%92%8C%E6%89%A9%E5%AE%B9RDD%E8%BF%9B%E8%A1%8Cjoin"><span class="nav-number">3.10.</span> <span class="nav-text">解决方案7：随机前缀和扩容RDD进行join</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%888%EF%BC%9A%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%A1%88%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">3.11.</span> <span class="nav-text">解决方案8：多种方案组合使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shuffle%E8%B0%83%E4%BC%98"><span class="nav-number">4.</span> <span class="nav-text">Shuffle调优</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashShuffleManager%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">4.1.</span> <span class="nav-text">HashShuffleManager运行原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%AA%E7%BB%8F%E4%BC%98%E5%8C%96%E7%9A%84HashShuffleManager"><span class="nav-number">4.1.1.</span> <span class="nav-text">未经优化的HashShuffleManager</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%90%8E%E7%9A%84HashShuffleManager"><span class="nav-number">4.1.2.</span> <span class="nav-text">优化后的HashShuffleManager</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SortShuffleManager%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">SortShuffleManager运行原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">4.2.1.</span> <span class="nav-text">普通运行机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bypass%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">4.2.2.</span> <span class="nav-text">bypass运行机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-file-buffer"><span class="nav-number">4.3.</span> <span class="nav-text">spark.shuffle.file.buffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-reducer-maxSizeInFlight"><span class="nav-number">4.4.</span> <span class="nav-text">spark.reducer.maxSizeInFlight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-io-maxRetries"><span class="nav-number">4.5.</span> <span class="nav-text">spark.shuffle.io.maxRetries</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-io-retryWait"><span class="nav-number">4.6.</span> <span class="nav-text">spark.shuffle.io.retryWait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-memoryFraction-1"><span class="nav-number">4.7.</span> <span class="nav-text">spark.shuffle.memoryFraction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-manager"><span class="nav-number">4.8.</span> <span class="nav-text">spark.shuffle.manager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-sort-bypassMergeThreshold"><span class="nav-number">4.9.</span> <span class="nav-text">spark.shuffle.sort.bypassMergeThreshold</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-shuffle-consolidateFiles"><span class="nav-number">4.10.</span> <span class="nav-text">spark.shuffle.consolidateFiles</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tricy Zhou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
