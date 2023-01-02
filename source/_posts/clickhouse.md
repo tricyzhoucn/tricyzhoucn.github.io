@@ -6,6 +6,8 @@ tags: clickhouse
 
 > clickhouse引擎一共分为四个系列，分别是Log、MergeTree、Integration、Special。其中包含两种特殊的表引擎Replicated、Distributed，功能上与其他表引擎正交。
 
+<!-- more -->
+
 ![engine](./clickhouse/engine.png)
 
 ### 引擎
