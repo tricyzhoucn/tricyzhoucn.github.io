@@ -299,28 +299,16 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>clickhouse引擎一共分为四个系列，分别是Log、MergeTree、Integration、Special。其中包含两种特殊的表引擎Replicated、Distributed，功能上与其他表引擎正交。</p>
 </blockquote>
-<p><img src="/2022/12/21/clickhouse/engine.png" alt="engine"></p>
-<h3 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h3><p><strong>Log系列</strong></p>
-<p>引擎功能相对简单，主要用于快速写入小表(1百万行左右的表)，然后全部读出的场景。</p>
-<p><strong>Integration系列</strong></p>
-<p>引擎主要用于把外部数据导入到ClickHouse中，或者在Clickhouse中直接操作外部数据源。</p>
-<p><strong>Special系列</strong></p>
-<p>引擎主要为了特定场景定制。</p>
-<p><strong>MergeTree系列</strong></p>
-<p>MergeTree：</p>
-<p>引擎主要用于海量数据分析，支持数据分区、存储有序、主键索引、稀疏索引、数据TTL等。MergeTree支持所有Clickhouse sql语法，但是有些功能与MySQL并不一致，比如MergeTree主键不去重。</p>
-<p>由于MergeTree采用类似LSM tree的结构，很多存储层处理逻辑直到Compaction期间才会发生。</p>
-<p>MergeTree虽然有主键索引，但是主要作用是加速，而不是为了保持唯一。Compaction完成后还是有主键相同数据。</p>
-<p>ReplicatedMergeTree: 多副本多分片</p>
-<p><img src="/2022/12/21/clickhouse/lsmtree.jpeg" alt="lsmtree"></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>engine:<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/762461">https://developer.aliyun.com/article/762461</a></p>
-<p>lsm-tree:<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1441835">https://cloud.tencent.com/developer/article/1441835</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/12/21/clickhouse/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -437,14 +425,16 @@
 
       
         
-          
-            <blockquote>
-<p>HBase相关</p>
+          <blockquote>
+<p>HBase相关(未完结待补充…)</p>
 </blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>HBase是一种分布式、可扩展、支持海量数据存储的NoSQL数据库。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bbgs-xc/p/13070724.html">https://www.cnblogs.com/bbgs-xc/p/13070724.html</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/12/20/hbase/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -561,19 +551,16 @@
 
       
         
-          
-            <blockquote>
-<p>Flink作业</p>
+          <blockquote>
+<p>Flink作业提交过程</p>
 </blockquote>
-<h3 id="Flink作业提交过程"><a href="#Flink作业提交过程" class="headerlink" title="Flink作业提交过程"></a>Flink作业提交过程</h3><p>Master和TaskManager在作业提交前启动(bin/start-cluster.sh)，TaskManager将自己注册给Master中的ResourceManager，初始化和资源注册过程发生在作业提交前，称之为第0步。</p>
-<p><img src="/2022/12/19/flink-start/flinkstart.png" alt="flinkstart"></p>
-<p>1.用户通过Flink客户端Clien提交作业，调用API构建数据流图，代码和配置编译打包，提交Master的Dispatcher，形成一个应用Application；</p>
-<p>2.Dispatcher接收作业，启动JobManager，负责本次作业的各项协调工作；</p>
-<p>3.JobManager向ResourceManager申请本次作业所需资源；</p>
-<p>4.闲置TaskManager会被反馈给JobManager；</p>
-<p>5.JobManager将逻辑视图转化为并行的物理执行图，将计算任务分发部署到多个TaskManager上，任务开始执行；</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/12/19/flink-start/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1590,7 +1577,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="Flink作业  Flink作业提交过程Master和TaskManager在作业提交前启动(bin&#x2F;start-cluster.sh)，TaskManager将自己注册给Master中的ResourceManager，初始化和资源注册过程发生在作业提交前，称之为第0步。  1.用户通过Flink客户端Clien提交作业，调用API构建数据流图，代码和配置编译打包，提交Master的Dispat">
+<meta name="description" content="Flink作业提交过程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flink-start">
 <meta property="og:url" content="http://example.com/2022/12/19/flink-start/index.html">
 <meta property="og:site_name" content="tricyzhou的笔记">
-<meta property="og:description" content="Flink作业  Flink作业提交过程Master和TaskManager在作业提交前启动(bin&#x2F;start-cluster.sh)，TaskManager将自己注册给Master中的ResourceManager，初始化和资源注册过程发生在作业提交前，称之为第0步。  1.用户通过Flink客户端Clien提交作业，调用API构建数据流图，代码和配置编译打包，提交Master的Dispat">
+<meta property="og:description" content="Flink作业提交过程">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/12/19/flink-start/flinkstart.png">
 <meta property="article:published_time" content="2022-12-19T02:38:33.000Z">
-<meta property="article:modified_time" content="2022-12-22T01:12:59.514Z">
+<meta property="article:modified_time" content="2023-01-02T02:32:45.937Z">
 <meta property="article:author" content="Tricy Zhou">
 <meta property="article:tag" content="Flink">
 <meta name="twitter:card" content="summary">
@@ -303,8 +303,10 @@
 
       
         <blockquote>
-<p>Flink作业</p>
+<p>Flink作业提交过程</p>
 </blockquote>
+<span id="more"></span>
+
 <h3 id="Flink作业提交过程"><a href="#Flink作业提交过程" class="headerlink" title="Flink作业提交过程"></a>Flink作业提交过程</h3><p>Master和TaskManager在作业提交前启动(bin/start-cluster.sh)，TaskManager将自己注册给Master中的ResourceManager，初始化和资源注册过程发生在作业提交前，称之为第0步。</p>
 <p><img src="/2022/12/19/flink-start/flinkstart.png" alt="flinkstart"></p>
 <p>1.用户通过Flink客户端Clien提交作业，调用API构建数据流图，代码和配置编译打包，提交Master的Dispatcher，形成一个应用Application；</p>
@@ -497,7 +499,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
