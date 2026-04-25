@@ -2,6 +2,7 @@
 title: spark-role
 date: 2022-12-15 10:45:04
 tags: Spark
+categories: 大数据
 ---
 
 > Spark角色

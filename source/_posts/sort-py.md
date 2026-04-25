@@ -2,6 +2,7 @@
 title: sort-py
 date: 2022-12-05 14:06:29
 tags: 算法
+categories: 算法
 ---
 
 > 排序算法汇总(基于python)

@@ -2,6 +2,7 @@
 title: dp-py
 date: 2022-12-09 15:13:30
 tags: 动态规划
+categories: 算法
 ---
 
 > 动态规划问题汇总

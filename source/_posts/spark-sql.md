@@ -2,6 +2,7 @@
 title: Spark-SQL
 date: 2022-11-25 14:50:13
 tags: 大数据
+categories: 大数据
 ---
 
 > Spark SQL执行原理

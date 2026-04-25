@@ -2,6 +2,7 @@
 title: flink-start
 date: 2022-12-19 10:38:33
 tags: Flink
+categories: 大数据
 ---
 
 > Flink作业提交过程

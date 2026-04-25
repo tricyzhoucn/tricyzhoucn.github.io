@@ -2,6 +2,7 @@
 title: spark-yarn
 date: 2022-12-15 10:39:52
 tags: Spark
+categories: 大数据
 ---
 
 > Spark on Yarn执行流程

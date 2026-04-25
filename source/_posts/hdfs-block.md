@@ -2,6 +2,7 @@
 title: hdfs-block
 date: 2022-12-14 09:48:41
 tags: HDFS
+categories: 大数据
 ---
 
 > HDFS block介绍

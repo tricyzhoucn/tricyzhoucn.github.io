@@ -2,6 +2,7 @@
 title: binary-tree
 date: 2022-12-08 14:20:24
 tags: 树
+categories: 算法
 ---
 
 > 树相关汇总

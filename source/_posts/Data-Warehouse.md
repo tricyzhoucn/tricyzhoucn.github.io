@@ -2,6 +2,7 @@
 title: Data-Warehouse
 date: 2022-11-28 14:24:23
 tags: 大数据
+categories: 大数据
 ---
 
 > 数仓分层

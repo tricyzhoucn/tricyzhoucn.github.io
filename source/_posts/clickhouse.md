@@ -2,6 +2,7 @@
 title: clickhouse
 date: 2022-12-21 09:54:58
 tags: clickhouse
+categories: 大数据
 ---
 
 > clickhouse引擎一共分为四个系列，分别是Log、MergeTree、Integration、Special。其中包含两种特殊的表引擎Replicated、Distributed，功能上与其他表引擎正交。

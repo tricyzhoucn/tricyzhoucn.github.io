@@ -2,6 +2,7 @@
 title: hive-sql
 date: 2022-12-05 15:01:21
 tags: sql
+categories: 大数据
 ---
 
 > Hive sql 汇总

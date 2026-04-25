@@ -2,6 +2,7 @@
 title: linked-list
 date: 2022-12-07 16:58:27
 tags: 链表
+categories: 算法
 ---
 
 > 链表相关汇总

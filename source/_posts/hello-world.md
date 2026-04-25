@@ -1,5 +1,6 @@
 ---
 title: Hexo相关
+categories: 工具
 ---
 
 ![测试图片](./hello-world/2022020901.jpeg)

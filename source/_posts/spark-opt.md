@@ -2,6 +2,7 @@
 title: spark-opt
 date: 2022-12-09 15:55:51
 tags: Spark
+categories: 大数据
 ---
 
 > Spark汇总

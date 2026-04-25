@@ -2,6 +2,7 @@
 title: Hive存储
 date: 2022-11-23 10:23:43
 Tags: 数据
+categories: 大数据
 ---
 
 > Hive存储数据格式对比

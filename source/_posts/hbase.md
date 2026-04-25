@@ -2,6 +2,7 @@
 title: hbase
 date: 2022-12-20 14:13:02
 tags: HBase
+categories: 大数据
 ---
 
 > HBase相关(未完结待补充...)
