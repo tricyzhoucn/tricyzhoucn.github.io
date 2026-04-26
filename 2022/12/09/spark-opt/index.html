@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tricyzhou.cn/images/redefine-og.webp">
 <meta property="article:published_time" content="2022-12-09T07:55:51.000Z">
-<meta property="article:modified_time" content="2026-04-25T08:44:57.519Z">
+<meta property="article:modified_time" content="2026-04-25T09:20:33.834Z">
 <meta property="article:author" content="Tricy Zhou">
 <meta property="article:tag" content="Spark">
 <meta name="twitter:card" content="summary">
@@ -405,8 +405,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-04-25 16:44:57</span>
-            <span class="mobile">2026-04-25 16:44:57</span>
+            <span class="desktop">2026-04-25 17:20:33</span>
+            <span class="mobile">2026-04-25 17:20:33</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -524,7 +524,12 @@
 
 <h4 id="原则9-优化数据结构"><a href="#原则9-优化数据结构" class="headerlink" title="原则9:优化数据结构"></a>原则9:优化数据结构</h4><p>三种数据类型比较耗费内存:1)对象，每个Java对象都有对象头、引用等额外信息，比较占用内存；2)字符串，每个字符串内部都有一个字符数组以及长度等信息；3）集合类型，比如HashMap、LinkedList等，因为集合类型内部通常会使用一些内部类来封装集合元素，比如Map.Entry；</p>
 <p>官方建议，使用原始类型比如Int、long代替字符串，数组代替集合类型，减少内存占用，降低GC频率，提升性能；</p>
-<h3 id="Spark作业基本运行原理"><a href="#Spark作业基本运行原理" class="headerlink" title="Spark作业基本运行原理"></a>Spark作业基本运行原理</h3><p><img lazyload src="/images/loading.svg" data-src="spark-submit.png" alt="spark-submit"></p>
+<h3 id="Spark作业基本运行原理"><a href="#Spark作业基本运行原理" class="headerlink" title="Spark作业基本运行原理"></a>Spark作业基本运行原理</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/12/09/spark-opt/spark-submit.png"
+                      alt="spark-submit"
+                ></p>
 <p>spark-submit提交Spark作业，启动一个对应Driver进程，根据部署模式不同，本地启动或者集群某个工作节点启动。Driver会占用一定数量的内存和CPU core。Driver进程首先向资源管理集群(Yarn等)申请资源，资源指的是Executor进行，资源管理集群会根据资源参数，在各个工作节点上启动一定数量的Executor进程，每个Executor进程会占用一定数量的内存和CPU core；</p>
 <p>资源到位，Driver开始将Spark作业拆分多个stage，并为每个stage创建一批task，然后将task分配到Executor执行，task是最小的计算单元，负责执行一摸一样的计算逻辑(代码片段)，stage的所有task执行完毕之后，中间结果写入本地磁盘，Driver开始调度运行下一个stage，输入数据是上一个stage中间结果，直到全部执行；</p>
 <p>Spark根据shuffle类算子进行stage划分，每个stage会通过网络传输拉取需要自己处理的所有相同key，然后进行聚合操作，这就是shuffle；</p>
@@ -562,16 +567,36 @@
 <h5 id="未经优化的HashShuffleManager"><a href="#未经优化的HashShuffleManager" class="headerlink" title="未经优化的HashShuffleManager"></a>未经优化的HashShuffleManager</h5><p>shuffle write：当前stage的每个task要为下个stage创建多少份磁盘文件？下个stage有多少task就要创建多少！下个stage有100个task，当前stage的每个task就要创建100份磁盘文件。如果当前stage有50个task，总共有10个Executor，那么每个Executor执行5个task，每个Executor会创建500个磁盘文件；</p>
 <p>shuffle read：通常是一个stage刚开始要做的事，该stage中的每个task从上个stage拉取相同key，网络传输到自己所在节点，然后聚合或连接；此时上个stage中的task已经分好了给下个stage每个task的磁盘文件，直接拉取；</p>
 <p>shuffle read的拉取过程是一边拉取一边聚合的，每个shuffle read task都有自己的buffer缓冲，每次都只能拉取与buffer缓冲相同大小的数据，然后通过内存中的Map进行聚合等操作，聚合完一批再拉下一批；</p>
-<p><img lazyload src="/images/loading.svg" data-src="hashshufflemanager.png" alt="hashshufflemanager"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/12/09/spark-opt/hashshufflemanager.png"
+                      alt="hashshufflemanager"
+                ></p>
 <h5 id="优化后的HashShuffleManager"><a href="#优化后的HashShuffleManager" class="headerlink" title="优化后的HashShuffleManager"></a>优化后的HashShuffleManager</h5><p>设置参数spark.shuffle.consolidateFiles=true，默认是false。出现shuffleFileGroup概念，CPU core决定可以并行task数量，每个Executor上磁盘文件数此时取决于CPU core数量*stage的task数量，consolidate机制使不同task可以复用同一批磁盘文件。减少磁盘文件数量，提升shuffle write性能；</p>
-<p><img lazyload src="/images/loading.svg" data-src="hashshufflemanageropt.png" alt="hashshufflemanageropt"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/12/09/spark-opt/hashshufflemanageropt.png"
+                      alt="hashshufflemanageropt"
+                ></p>
 <h4 id="SortShuffleManager运行原理"><a href="#SortShuffleManager运行原理" class="headerlink" title="SortShuffleManager运行原理"></a>SortShuffleManager运行原理</h4><p>SortShuffleManager分为普通运行机制和bypass运行机制，当shuffle read task的数量小于等于spark.shuffle.sort.bypassMergeThreshold参数值时(默认200)，就启用bypass机制；</p>
 <h5 id="普通运行机制"><a href="#普通运行机制" class="headerlink" title="普通运行机制"></a>普通运行机制</h5><p>排序之后分批(1万条)溢写磁盘，写入磁盘是通过java的BufferedOutputStream实现，先缓冲内存，内存满了之后溢写磁盘，每个task最终只有一个磁盘文件，但是会有一个索引文件，标识下游各个task需要数据的start offset和end offset；</p>
-<p><img lazyload src="/images/loading.svg" data-src="sortshufflemanager.png" alt="sortshufflemanager"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/12/09/spark-opt/sortshufflemanager.png"
+                      alt="sortshufflemanager"
+                ></p>
 <h5 id="bypass运行机制"><a href="#bypass运行机制" class="headerlink" title="bypass运行机制"></a>bypass运行机制</h5><p>触发条件：shuffle map task数量小于spark.shuffle.sort.bypassMergeThreshold参数的值，不是聚合类的shuffle算子(例如reduceByKey)；</p>
 <p>此时task会为每个下游task通过hash创建一个临时磁盘文件，类似于HashShuffleManager未优化版本，但是最终会做一个磁盘文件的合并，所以相对来说shuffle read性能会好些；</p>
 <p>相较于SortShuffleManager普通机制，磁盘写机制不同，不会进行排序；</p>
-<p><img lazyload src="/images/loading.svg" data-src="bypass.png" alt="bypass"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/12/09/spark-opt/bypass.png"
+                      alt="bypass"
+                ></p>
 <h4 id="spark-shuffle-file-buffer"><a href="#spark-shuffle-file-buffer" class="headerlink" title="spark.shuffle.file.buffer"></a>spark.shuffle.file.buffer</h4><p>默认值：32k</p>
 <p>参数说明：设置shuffle write task的BufferedOutputStream的buffer缓冲大小，将数据写到磁盘文件之前，会先写到buffer缓冲中，待缓冲写满之后，才会溢写磁盘；</p>
 <p>调优建议：如果作业可用的内存资源较为充足的话，可以适当增加这个参数的大小(比如64k)，从而减少shuffle write过程中溢写磁盘文件的次数，也就可以减少磁盘IO次数，进而提升性能。合理调节，1%-5%性能提升；</p>
@@ -596,9 +621,9 @@
 <h4 id="spark-shuffle-consolidateFiles"><a href="#spark-shuffle-consolidateFiles" class="headerlink" title="spark.shuffle.consolidateFiles"></a>spark.shuffle.consolidateFiles</h4><p>默认值：false</p>
 <p>参数说明：如果使用了HashShuffleManager，该参数有效，如果设置了true，那么就会开启consolidate机制，会大幅度合并shuffle write的输出文件，对于shuffle read task数量特别多的情况下，这种方法可以极大减少磁盘IO开销，提升性能；</p>
 <p>调优建议：如果的确不需要SortShuffleManager排序机制，除了使用bypass还可以将spark.shuffle.manager设置为hash，使用HashShuffleManager，同时开启consolidate机制。实践表示，性能比开启bypass的SortShuffleManager要高出10%-30%；</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>(1)<a class="link" target="_blank" rel="noopener" href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html">https://tech.meituan.com/2016/04/29/spark-tuning-basic.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>(2)<a class="link" target="_blank" rel="noopener" href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html">https://tech.meituan.com/2016/05/12/spark-tuning-pro.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>(3)<a class="link" target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/325349">https://bbs.huaweicloud.com/blogs/325349<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>(1)<a class="link"   target="_blank" rel="noopener" href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html" >https://tech.meituan.com/2016/04/29/spark-tuning-basic.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>(2)<a class="link"   target="_blank" rel="noopener" href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html" >https://tech.meituan.com/2016/05/12/spark-tuning-pro.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>(3)<a class="link"   target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/325349" >https://bbs.huaweicloud.com/blogs/325349<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 
 		</div>
 
@@ -613,7 +638,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2026-04-25 16:44:57
+                    :</strong> 2026-04-25 17:20:33
             </li>
         
         <li>

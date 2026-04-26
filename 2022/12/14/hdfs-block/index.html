@@ -480,8 +480,8 @@
 <p>不能太大：1）在一些分块读取的场景，不够灵活，会带来额外的网络消耗；2）在上传文件时，一旦发生故障，会造成资源的浪费；</p>
 <p>不能太小：1）块太小，同样大小的文件会占用过多的NameNode的元数据空间；2）块太小，在进行读写操作时，会消耗额外的寻址时间；</p>
 <p>块缓存：通常DataNode从磁盘读取块，但是对于频繁访问的数据块，DataNode会将其缓存到DataNode节点内存中，以堆外缓存形式存在。默认情况下，一个块只会缓存到一个DataNode内存中，这样计算框架就可以在缓存块上进行计算任务，大大提高读操作性能，进而提高任务效率；</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/sunbr/p/13262242.html">https://www.cnblogs.com/sunbr/p/13262242.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26442553/article/details/79117897">https://blog.csdn.net/qq_26442553/article/details/79117897<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/sunbr/p/13262242.html" >https://www.cnblogs.com/sunbr/p/13262242.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26442553/article/details/79117897" >https://blog.csdn.net/qq_26442553/article/details/79117897<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 
 		</div>
 
