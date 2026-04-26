@@ -1,0 +1,26 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Hexo
+db.json
+public/
+.deploy_git/
+
+# Dependencies
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+jupyter/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
