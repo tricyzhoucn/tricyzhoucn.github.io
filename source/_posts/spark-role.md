@@ -25,4 +25,4 @@ categories: 大数据
 | TaskScheduler   | 将task发给Executor执行                                       |
 | SparkEnv        | 线程级别的上下文，存储运行时的重要组件的引用                 |
 
-![sparkonyarn](./spark-role/sparksubmit.png)
+![sparkonyarn](sparksubmit.png)

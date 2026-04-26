@@ -55,7 +55,7 @@ TextFile反序列化必须逐个字符判断是不是分隔符或行结束符号
 
   每个ORC文件横向切分多个stripe，每个stripe列式存储，每个stripe默认250MB；
 
-![orc结构](./hive-data/orc.png)
+![orc结构](orc.png)
 
 * 条带(stripe)：ORC文件存储数据；
 * 文件注脚(file footer)：包含了文件中stripe的列表，每个stripe的行数，以及每个列的数据类型；每个列的最小值，最大值，行计数，求和等聚合信息。
@@ -107,7 +107,7 @@ ACID事务支持：
 
 结构：
 
-![parquet结构](./hive-data/parquet.png)
+![parquet结构](parquet.png)
 
   Parquet存储数据时，同时存储多级元数据，文件级元数据、列块级元数据、页级元数据；
 

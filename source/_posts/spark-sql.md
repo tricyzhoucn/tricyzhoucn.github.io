@@ -27,23 +27,23 @@ categories: 大数据
 
   依赖第三方类库ANTLR
 
-  ![parser](./spark-sql/parser.png)
+  ![parser](parser.png)
 
 * Analyzer模块：遍历AST，对AST节点数据类型和函数绑定，根据元数据信息Catalog解析数据表字段
 
   会判断表名、字段名是否存在
 
-  ![analyzer](./spark-sql/analyzer.png)
+  ![analyzer](analyzer.png)
 
 * Optimizer模块：Catalyst核心，RBO(基于规则优化)和CBO(基于代价优化)
 
   谓词下推：过滤操作下推join之前，减少join数据量，减少耗时；
 
-  ![predicate-pushdown](./spark-sql/predicate_pushdown.png)
+  ![predicate-pushdown](predicate_pushdown.png)
 
   常量累加：减少每行重复常量计算，直接使用结果；
 
-  ![constant_fold](./spark-sql/constant_fold.png)
+  ![constant_fold](constant_fold.png)
 
   列值裁剪：裁剪不需要的列，减少网络、内存消耗，提高列式存储扫描效率；
 
@@ -81,7 +81,7 @@ categories: 大数据
 
  * 选择最优物理执行计划，生成java字节码，将SQL转化为DAG，以RDD形式进行执行；
 
-   ![summary](./spark-sql/summary.png)
+   ![summary](summary.png)
 
 ### 参考
 

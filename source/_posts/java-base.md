@@ -18,7 +18,7 @@ categories: 编程
 - **方法**：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。
 - **实例变量**：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。
 
-![java_intro](./java-base/java_intro.jpeg)
+![java_intro](java_intro.jpeg)
 
 
 
@@ -121,4 +121,4 @@ public class HelloWorld {
 
 接口**只定义派生要用到的方法**，但是方法的**具体实现完全取决于派生类**。
 
-![java_exec](./java-base/java_exec.png)
+![java_exec](java_exec.png)

@@ -121,7 +121,7 @@ conf.registerKryoClasses(Array(classOf[MyClass1], classOf[MyClass2]))
 
 ### Spark作业基本运行原理
 
-![spark-submit](./spark-opt/spark-submit.png)
+![spark-submit](spark-submit.png)
 
 spark-submit提交Spark作业，启动一个对应Driver进程，根据部署模式不同，本地启动或者集群某个工作节点启动。Driver会占用一定数量的内存和CPU core。Driver进程首先向资源管理集群(Yarn等)申请资源，资源指的是Executor进行，资源管理集群会根据资源参数，在各个工作节点上启动一定数量的Executor进程，每个Executor进程会占用一定数量的内存和CPU core；
 
@@ -276,13 +276,13 @@ shuffle read：通常是一个stage刚开始要做的事，该stage中的每个t
 
 shuffle read的拉取过程是一边拉取一边聚合的，每个shuffle read task都有自己的buffer缓冲，每次都只能拉取与buffer缓冲相同大小的数据，然后通过内存中的Map进行聚合等操作，聚合完一批再拉下一批；
 
-![hashshufflemanager](./spark-opt/hashshufflemanager.png)
+![hashshufflemanager](hashshufflemanager.png)
 
 ##### 优化后的HashShuffleManager
 
 设置参数spark.shuffle.consolidateFiles=true，默认是false。出现shuffleFileGroup概念，CPU core决定可以并行task数量，每个Executor上磁盘文件数此时取决于CPU core数量*stage的task数量，consolidate机制使不同task可以复用同一批磁盘文件。减少磁盘文件数量，提升shuffle write性能；
 
-![hashshufflemanageropt](./spark-opt/hashshufflemanageropt.png)
+![hashshufflemanageropt](hashshufflemanageropt.png)
 
 
 
@@ -294,7 +294,7 @@ SortShuffleManager分为普通运行机制和bypass运行机制，当shuffle rea
 
 排序之后分批(1万条)溢写磁盘，写入磁盘是通过java的BufferedOutputStream实现，先缓冲内存，内存满了之后溢写磁盘，每个task最终只有一个磁盘文件，但是会有一个索引文件，标识下游各个task需要数据的start offset和end offset；
 
-![sortshufflemanager](./spark-opt/sortshufflemanager.png)
+![sortshufflemanager](sortshufflemanager.png)
 
 ##### bypass运行机制
 
@@ -304,7 +304,7 @@ SortShuffleManager分为普通运行机制和bypass运行机制，当shuffle rea
 
 相较于SortShuffleManager普通机制，磁盘写机制不同，不会进行排序；
 
-![bypass](./spark-opt/bypass.png)
+![bypass](bypass.png)
 
 #### spark.shuffle.file.buffer
 

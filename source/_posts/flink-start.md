@@ -13,7 +13,7 @@ categories: 大数据
 
 Master和TaskManager在作业提交前启动(bin/start-cluster.sh)，TaskManager将自己注册给Master中的ResourceManager，初始化和资源注册过程发生在作业提交前，称之为第0步。
 
-![flinkstart](./flink-start/flinkstart.png)
+![flinkstart](flinkstart.png)
 
 1.用户通过Flink客户端Clien提交作业，调用API构建数据流图，代码和配置编译打包，提交Master的Dispatcher，形成一个应用Application；
 
