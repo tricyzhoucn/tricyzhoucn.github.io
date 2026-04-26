@@ -5,10 +5,16 @@ Tricy 数字分身 - Streamlit 对话界面
 
 import streamlit as st
 import re
+import os
 from datetime import datetime
 
 AVATAR_NAME = "Tricy"
 KB_DIR = "../../source/about"
+
+# ============== 配置加载 ==============
+API_URL = os.getenv("NVDA_API_URL")
+API_KEY = os.getenv("NVDA_API_KEY")
+MODEL = os.getenv("NVDA_MODEL")
 
 
 # ============== 知识库加载 ==============
